@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Switchery</title>
+    <link href="stylesheets/style.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/jquery.switchery.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div style="width: 100px; height: 50px; margin: 100px auto 0;">
+      <input type="checkbox" class="switcher" />
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.switchery.js"></script>
+    <script type="text/javascript">
+      (function() {
+        $('.switcher').switchery();
+      })();
+    </script>
+  </body>
+</html>
