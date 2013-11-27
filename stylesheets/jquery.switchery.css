@@ -3,9 +3,10 @@
   border: 1px solid #dfdfdf;
   border-radius: 20px;
   cursor: pointer;
-  display: block;
+  display: inline-block;
   height: 30px;
   position: relative;
+  vertical-align: middle;
   width: 50px;
 }
 
