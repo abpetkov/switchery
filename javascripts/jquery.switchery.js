@@ -52,7 +52,7 @@
   function Switchery(element, options) {
     this.element = $(element);
     this.options = options;
-    this.init();
+    if (this.element.is(':checkbox')) this.init();
   };
 
   /*
@@ -197,9 +197,13 @@
     var $this = this
       , switcher = this.element.next(this.switcher);
 
-    switcher.on('click', function() {
-      $this.setPosition(true);
-    });
+    if (this.isDisabled() == false) {
+      switcher.on('click', function() {
+        $this.setPosition(true);
+      });
+    } else {
+      this.element.prop('disabled', true);
+    }
   };
 
   /*
@@ -214,7 +218,7 @@
     this.setSpeed();
     this.setPosition();
     this.setAttributes();
-    if (this.isDisabled() == false) this.handleClick();
+    this.handleClick();
   };
 
 }(jQuery));
