@@ -4,7 +4,7 @@
 
 Switchery is a simple jQuery plugin that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.
 
-Works with jQuery 1.6+. Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+
+Works with jQuery 1.7.0+. Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+
 
 ## Setup
 
