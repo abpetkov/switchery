@@ -81,6 +81,67 @@ h4 {
 
 /*
  *
+ * Fading page load keyframes.
+ *
+ */
+
+keyframes fade-load {
+  0% {
+    margin-top: 10px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-load {
+  0% {
+    margin-top: 10px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fade-load {
+  0% {
+    margin-top: 10px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fade-load {
+  0% {
+    margin-top: 10px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fade-load {
+  0% {
+    margin-top: 10px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+/*
+ *
  * General layout.
  *
  */
@@ -88,6 +149,17 @@ h4 {
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
+
+.header,
+.container,
+.footer {
+  animation: fade-load 1.4s;
+
+  -webkit-animation: fade-load 1.4s;
+  -moz-animation: fade-load 1.4s;
+  -ms-animation: fade-load 1.4s;
+  -o-animation: fade-load 1.4s;
+}
 
 .container {
   background: rgba(255, 255, 255, 0.9);
@@ -115,8 +187,8 @@ h4 {
 
   -webkit-transition: text-shadow 0.2s ease-out;
   -moz-transition: text-shadow 0.2s ease-out;
-  -o-transition: text-shadow 0.2s ease-out;
   -ms-transition: text-shadow 0.2s ease-out;
+  -o-transition: text-shadow 0.2s ease-out;
 }
 
 .header a:hover,
@@ -294,8 +366,8 @@ h4 {
 
   -webkit-transition: background-color 0.1s ease-out;
   -moz-transition: background-color 0.1s ease-out;
-  -o-transition: background-color 0.1s ease-out;
   -ms-transition: background-color 0.1s ease-out;
+  -o-transition: background-color 0.1s ease-out;
 }
 
 .button:hover {
