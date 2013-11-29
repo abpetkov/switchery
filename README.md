@@ -4,7 +4,7 @@
 
 Switchery is a simple jQuery plugin that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.
 
-Works with jQuery 1.7.0+. Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+
+Works with jQuery 1.7.0+. Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE7+
 
 ## Setup
 
@@ -13,19 +13,15 @@ Once you've downloaded the source code, include the necessary CSS and JS files i
 #### Include CSS
 
 ```html
-
 <!-- Put this in your <head> tag -->
 <link rel="stylesheet" href="PATH_TO_FILE/jquery.switchery.css" />
-
 ```
 
 #### Include JS
 
 ```html
-
 <!-- Put this right after the jQuery library -->
 <script src="PATH_TO_FILE/jquery.switchery.js"></script>
-
 ```
 
 ## Default Usage
@@ -33,24 +29,20 @@ Once you've downloaded the source code, include the necessary CSS and JS files i
 Invoke the plugin in a self-invoking anonimous function right before the closing &lt;/body&gt; tag or in a $(document).ready(function() {}); in the &lt;head&gt; tag.
 
 ```js
-
 (function() {
   $('.js-switch').switchery();
 })();
-
 ```
 
 ## Settings and Defaults
 
 ```js
-
 defaults = {
   color    : '#64bd63',
   className: 'switchery',
   disabled : false,
   speed    : '0.1s'
 }
-
 ```
 
 - `color` : color of the switch element (HEX or RGB value)
@@ -65,9 +57,7 @@ defaults = {
 Only thing you need is to add a `checked` attribute to your checkbox input. Simple as that.
 
 ```html
-
 <input type="checkbox" class="js-switch-checked" checked />
-
 ```
 
 ### Multiple switches
@@ -75,12 +65,10 @@ Only thing you need is to add a `checked` attribute to your checkbox input. Simp
 You can add as many switches as you like, as long as their corresponding checkboxes have the same class.
 
 ```html
-
 <input type="checkbox" class="js-switch-multiple" />
 <input type="checkbox" class="js-switch-multiple" />
 
 $('.js-switch-multiple').switchery();
-
 ```
 
 ### Disabled
@@ -88,9 +76,7 @@ $('.js-switch-multiple').switchery();
 Use the `disabled` option to make your switch active or inactive.
 
 ```js
-
 $('.js-switch-disabled').switchery({ disabled: true });
-
 ```
 
 ### Coloured
@@ -98,10 +84,7 @@ $('.js-switch-disabled').switchery({ disabled: true });
 You can colorize the switch to fit your site perfectly:
 
 ```js
-
 $('.js-switch-blue').switchery({ color: '#41b7f1' });
-
-
 ```
 
 ### Checking state
@@ -109,13 +92,11 @@ $('.js-switch-blue').switchery({ color: '#41b7f1' });
 Checking the current state of the checkbox for JavaScript or jQuery form validation is quite easy:
 
 ```js
-
 // jQuery
 $('.js-check-state').prop('checked');
 
 // JavaScript
 document.getElementById('js-check-state').checked;
-
 ```
 
 ## Contact
