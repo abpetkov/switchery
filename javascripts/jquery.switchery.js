@@ -1,9 +1,9 @@
 /*
  * Switchery 1.0
- *
- * Authored by Alexander Petkov (https://github.com/abpetkov)
- *
  * http://abpetkov.github.io/switchery/
+ *
+ * Authored by Alexander Petkov
+ * https://github.com/abpetkov
  *
  * Copyright 2013, Alexander Petkov
  * License: The MIT License (MIT)
