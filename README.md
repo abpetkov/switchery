@@ -6,6 +6,8 @@ Switchery is a simple jQuery plugin that helps you turn your default HTML checkb
 
 Works with jQuery 1.7.0+. Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE7+
 
+[Live Preview](http://abpetkov.github.io/switchery/)
+
 ## Setup
 
 Once you've downloaded the source code, include the necessary CSS and JS files in your HTML.
