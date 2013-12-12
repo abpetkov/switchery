@@ -124,8 +124,8 @@
   /*
    * Set switch jack proper position.
    *
-   * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is api
-   * @clicked private
+   * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
+   * @api private
    */
 
   Switchery.prototype.setPosition = function (clicked) {
