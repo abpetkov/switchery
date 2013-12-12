@@ -41,11 +41,12 @@ var defaults = {
 function Switchery(element, options) {
   if (!(this instanceof Switchery)) return new Switchery(options);
 
-  options = options || {};
+  this.element = element;
+  this.options = options || {};
 
   for (var i in defaults) {
-    if (!(i in options)) {
-      options[i] = defaults[i];
+    if (!(i in this.options)) {
+      this.options[i] = defaults[i];
     }
   }
 
@@ -59,7 +60,29 @@ function Switchery(element, options) {
  */
 
 Switchery.prototype.hide = function() {
-  this.element.display = 'none';
+  this.element.style.display = 'none';
+};
+
+/*
+ * Show custom switch after the target element.
+ *
+ * @api private
+ */
+
+Switchery.prototype.show = function() {
+  var switcher = this.create();
+  this.element.parentNode.innerHTML = switcher;
+};
+
+/*
+ * Create custom switch.
+ *
+ * @returns {Object} switcher
+ * @api private
+ */
+
+Switchery.prototype.create = function() {
+  return this.switcher = '<span class="' + this.options.className + '"><small></small></span>';
 };
 
 /**
@@ -69,5 +92,6 @@ Switchery.prototype.hide = function() {
  */
 
 Switchery.prototype.init = function() {
-
+  this.hide();
+  this.show();
 };
