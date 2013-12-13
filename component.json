@@ -1,17 +1,23 @@
 {
   "name": "switchery",
-  "repo": "component/switchery",
+  "repo": "abpetkov/switchery",
   "description": "Component to create iOS 7 styled switches from default input checkboxes",
   "version": "1.0.0",
-  "keywords": ["checkbox", "input", "switch", "iOS7"],
+  "keywords": [
+    "checkbox",
+    "input",
+    "switch",
+    "iOS7"
+  ],
+  "license": "MIT",
   "dependencies": {
     "JayceTDE/pend": "*"
   },
+  "main": "index.js",
   "scripts": [
     "index.js"
   ],
   "styles": [
     "switchery.css"
-  ],
-  "license": "MIT"
+  ]
 }
