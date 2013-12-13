@@ -84,7 +84,7 @@ Switchery.prototype.show = function() {
 /**
  * Create custom switch.
  *
- * @returns {Object} switcher
+ * @returns {Object} this.switcher
  * @api private
  */
 
@@ -100,7 +100,7 @@ Switchery.prototype.create = function() {
 /**
  * See if input is checked.
  *
- * @returns {Boolean} checked
+ * @returns {Boolean}
  * @api private
  */
 
@@ -111,7 +111,7 @@ Switchery.prototype.isChecked = function() {
 /**
  * See if switcher should be disabled.
  *
- * @returns {Boolean} disabled
+ * @returns {Boolean}
  * @api private
  */
 
