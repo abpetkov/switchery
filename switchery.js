@@ -35,7 +35,7 @@ var defaults = {
   , className: 'switchery'
   , disabled : false
   , speed    : '0.1s'
-}
+};
 
 /**
  * Create Switchery object.
@@ -105,7 +105,7 @@ Switchery.prototype.create = function() {
  */
 
 Switchery.prototype.isChecked = function() {
-  return checked = this.element.checked;
+  return this.element.checked;
 };
 
 /**
@@ -116,7 +116,7 @@ Switchery.prototype.isChecked = function() {
  */
 
 Switchery.prototype.isDisabled = function() {
-  return disabled = this.options.disabled || this.element.disabled;
+  return this.options.disabled || this.element.disabled;
 };
 
 /**
@@ -134,7 +134,7 @@ Switchery.prototype.setPosition = function (clicked) {
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
 
-  if (checked == true) {
+  if (checked === true) {
     this.element.checked = true;
     jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
     if (this.options.color) this.colorize();
@@ -144,7 +144,7 @@ Switchery.prototype.setPosition = function (clicked) {
     this.switcher.style.backgroundColor = '';
     this.switcher.style.borderColor =  '';
   }
-}
+};
 
 /**
  * Set speed.
@@ -192,7 +192,7 @@ Switchery.prototype.handleClick = function() {
   var $this = this
     , switcher = this.switcher;
 
-  if (this.isDisabled() == false) {
+  if (this.isDisabled() === false) {
     switcher.addEventListener('click', function() {
       $this.setPosition(true);
     });

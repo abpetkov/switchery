@@ -13,9 +13,9 @@
   "dependencies": {
     "JayceTDE/pend": "*"
   },
-  "main": "index.js",
+  "main": "switchery.js",
   "scripts": [
-    "index.js"
+    "switchery.js"
   ],
   "styles": [
     "switchery.css"
