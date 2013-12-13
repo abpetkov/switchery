@@ -88,7 +88,12 @@ Switchery.prototype.show = function() {
  */
 
 Switchery.prototype.create = function() {
-  return this.switcher = '<span class="' + this.options.className + '"><small></small></span>';
+  this.switcher = document.createElement('span');
+  this.jack = document.createElement('small');
+  this.switcher.appendChild(this.jack);
+  this.switcher.className = this.options.className;
+
+  return this.switcher;
 };
 
 /**
@@ -111,6 +116,44 @@ Switchery.prototype.isChecked = function() {
 
 Switchery.prototype.isDisabled = function() {
   return disabled = this.options.disabled;
+};
+
+/*
+ * Set switch jack proper position.
+ *
+ * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
+ * @api private
+ */
+
+Switchery.prototype.setPosition = function (clicked) {
+  var checked = this.isChecked()
+    , switcher = this.switcher
+    , jack = this.jack;
+
+  if (clicked && checked) checked = false;
+  else if (clicked && !checked) checked = true;
+
+  if (checked == true) {
+    this.element.checked = true;
+    jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
+    if (this.options.color) this.colorize();
+  } else {
+    jack.style.left = '0';
+    this.element.checked = false;
+    this.switcher.style.backgroundColor = '';
+    this.switcher.style.borderColor =  '';
+  }
+}
+
+/*
+ * Set switch color.
+ *
+ * @api private
+ */
+
+Switchery.prototype.colorize = function() {
+  this.switcher.style.backgroundColor = this.options.color;
+  this.switcher.style.borderColor = this.options.color;
 };
 
 /**
