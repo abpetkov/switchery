@@ -146,6 +146,31 @@ Switchery.prototype.setPosition = function (clicked) {
 }
 
 /*
+ * Set speed.
+ *
+ * @api private
+ */
+
+Switchery.prototype.setSpeed = function() {
+  this.switcher.style.transitionDuration = this.options.speed;
+  this.jack.style.transitionDuration = this.options.speed;
+};
+
+/*
+ * Copy the input name and id attributes.
+ *
+ * @api private
+ */
+
+Switchery.prototype.setAttributes = function() {
+  var id = this.element.getAttribute('id')
+    , name = this.element.getAttribute('name');
+
+  if (id) this.switcher.setAttribute('id', id);
+  if (name) this.switcher.setAttribute('name', name);
+};
+
+/*
  * Set switch color.
  *
  * @api private
@@ -154,6 +179,25 @@ Switchery.prototype.setPosition = function (clicked) {
 Switchery.prototype.colorize = function() {
   this.switcher.style.backgroundColor = this.options.color;
   this.switcher.style.borderColor = this.options.color;
+};
+
+/*
+ * Handle the switch click event.
+ *
+ * @api private
+ */
+
+Switchery.prototype.handleClick = function() {
+  var $this = this
+    , switcher = this.switcher;
+
+  if (this.isDisabled() == false) {
+    switcher.addEventListener('click', function() {
+      $this.setPosition(true);
+    });
+  } else {
+    this.element.disabled = true;
+  }
 };
 
 /**
@@ -165,5 +209,8 @@ Switchery.prototype.colorize = function() {
 Switchery.prototype.init = function() {
   this.hide();
   this.show();
+  this.setSpeed();
   this.setPosition();
+  this.setAttributes();
+  this.handleClick();
 };
