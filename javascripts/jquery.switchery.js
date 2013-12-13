@@ -107,7 +107,7 @@
    */
 
   Switchery.prototype.isDisabled = function() {
-    return this.options.disabled;
+    return disabled = this.options.disabled || this.element.prop('disabled');
   };
 
   /*

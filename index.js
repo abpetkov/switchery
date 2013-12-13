@@ -115,7 +115,7 @@ Switchery.prototype.isChecked = function() {
  */
 
 Switchery.prototype.isDisabled = function() {
-  return disabled = this.options.disabled;
+  return disabled = this.options.disabled || this.element.disabled;
 };
 
 /*
