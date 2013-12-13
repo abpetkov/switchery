@@ -1,3 +1,4 @@
+
 /**
  * Switchery 1.0
  * http://abpetkov.github.io/switchery/
@@ -118,7 +119,7 @@ Switchery.prototype.isDisabled = function() {
   return disabled = this.options.disabled || this.element.disabled;
 };
 
-/*
+/**
  * Set switch jack proper position.
  *
  * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
@@ -145,7 +146,7 @@ Switchery.prototype.setPosition = function (clicked) {
   }
 }
 
-/*
+/**
  * Set speed.
  *
  * @api private
@@ -156,7 +157,7 @@ Switchery.prototype.setSpeed = function() {
   this.jack.style.transitionDuration = this.options.speed;
 };
 
-/*
+/**
  * Copy the input name and id attributes.
  *
  * @api private
@@ -170,7 +171,7 @@ Switchery.prototype.setAttributes = function() {
   if (name) this.switcher.setAttribute('name', name);
 };
 
-/*
+/**
  * Set switch color.
  *
  * @api private
@@ -181,7 +182,7 @@ Switchery.prototype.colorize = function() {
   this.switcher.style.borderColor = this.options.color;
 };
 
-/*
+/**
  * Handle the switch click event.
  *
  * @api private
