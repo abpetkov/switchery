@@ -29,12 +29,6 @@ $ component install abpetkov/switchery
 $ bower install switchery
 ```
 
-##### npm
-
-```shell
-$ npm install switchery
-```
-
 ## Usage
 
 ```js
