@@ -227,13 +227,25 @@ keyframes fade-load {
   margin-bottom: 0;
 }
 
-.section > p,
-.example > p {
+.description .left {
+  width: 640px;
+}
+
+.description .right {
+  width: 235px;
+}
+
+.description .right a {
+  float: right;
+}
+
+.section p,
+.example p {
   margin-bottom: 10px;
 }
 
-.section > p:last-child,
-.example > p:last-child {
+.section p:last-child,
+.example p:last-child {
   margin: 0;
 }
 

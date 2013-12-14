@@ -6,11 +6,50 @@
 
     <title>Switchery - iOS 7 style switches for your checkboxes</title>
     <link href="demo.css" rel="stylesheet" />
-    <link href="build/build.css" rel="stylesheet" />
+    <link href="standalone/switchery.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Istok Web:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-46136560-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
   <body>
 
+    <header class="header">
+      <h1>Switchery</h1>
+      <h2>iOS 7 style switches for your checkboxes</h2>
+      <div class="author">
+        Follow me:
+        <a class="twitter" href="https://twitter.com/abpetkov" target="_blank">@abpetkov</a>
+        <a class="github" href="https://github.com/abpetkov" target="_blank">abpetkov</a>
+        <a class="dribbble" href="http://dribbble.com/apetkov" target="_blank">apetkov</a>
+      </div>
+    </header>
+
     <div class="container">
+      <section class="section clearfix description">
+
+        <div class="left">
+          <h3>What is Switchery?</h3>
+          <p>Switchery is a simple component that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.</p>
+          <p>Licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
+          <p>Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+</p>
+        </div>
+
+        <div class="right">
+          <a href="https://github.com/abpetkov/switchery" target="_blank" class="button secondary"><span class="button-icon fork"></span>Fork the GitHub repo</a>
+        </div>
+      </section>
 
       <section class="section">
         <div class="example" id="test">
@@ -20,7 +59,23 @@
       </section>
     </div>
 
-    <script type="text/javascript" src="build/build.js"></script>
+    <footer class="footer clearfix">
+      <div class="left">
+        <ul>
+          <li><a href="https://github.com/abpetkov/switchery/issues" target="_blank">Submit an issue</a></li> /
+          <li><a href="https://github.com/abpetkov/switchery" target="_blank">View on GitHub</a></li>
+        </ul>
+      </div>
+      <div class="right">
+        Follow me:
+        <a class="twitter" href="https://twitter.com/abpetkov" target="_blank">@abpetkov</a>
+        <a class="github" href="https://github.com/abpetkov" target="_blank">abpetkov</a>
+        <a class="dribbble" href="http://dribbble.com/apetkov" target="_blank">apetkov</a>
+        <div class="copyright">Copyright &copy; 2013 Alexander Petkov</div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="standalone/switchery.js"></script>
     <script type="text/javascript">
       var Switchery = require('switchery');
       var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch-default'));
