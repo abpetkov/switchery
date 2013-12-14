@@ -383,7 +383,8 @@ module.exports = function (el) {
 };
 
 });
-require.register("switchery/index.js", function(exports, require, module){
+require.register("switchery/switchery.js", function(exports, require, module){
+
 /**
  * Switchery 1.0
  * http://abpetkov.github.io/switchery/
@@ -420,7 +421,7 @@ var defaults = {
   , className: 'switchery'
   , disabled : false
   , speed    : '0.1s'
-}
+};
 
 /**
  * Create Switchery object.
@@ -469,7 +470,7 @@ Switchery.prototype.show = function() {
 /**
  * Create custom switch.
  *
- * @returns {Object} switcher
+ * @returns {Object} this.switcher
  * @api private
  */
 
@@ -485,26 +486,26 @@ Switchery.prototype.create = function() {
 /**
  * See if input is checked.
  *
- * @returns {Boolean} checked
+ * @returns {Boolean}
  * @api private
  */
 
 Switchery.prototype.isChecked = function() {
-  return checked = this.element.checked;
+  return this.element.checked;
 };
 
 /**
  * See if switcher should be disabled.
  *
- * @returns {Boolean} disabled
+ * @returns {Boolean}
  * @api private
  */
 
 Switchery.prototype.isDisabled = function() {
-  return disabled = this.options.disabled || this.element.disabled;
+  return this.options.disabled || this.element.disabled;
 };
 
-/*
+/**
  * Set switch jack proper position.
  *
  * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
@@ -519,7 +520,7 @@ Switchery.prototype.setPosition = function (clicked) {
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
 
-  if (checked == true) {
+  if (checked === true) {
     this.element.checked = true;
     jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
     if (this.options.color) this.colorize();
@@ -529,9 +530,9 @@ Switchery.prototype.setPosition = function (clicked) {
     this.switcher.style.backgroundColor = '';
     this.switcher.style.borderColor =  '';
   }
-}
+};
 
-/*
+/**
  * Set speed.
  *
  * @api private
@@ -542,7 +543,7 @@ Switchery.prototype.setSpeed = function() {
   this.jack.style.transitionDuration = this.options.speed;
 };
 
-/*
+/**
  * Copy the input name and id attributes.
  *
  * @api private
@@ -556,7 +557,7 @@ Switchery.prototype.setAttributes = function() {
   if (name) this.switcher.setAttribute('name', name);
 };
 
-/*
+/**
  * Set switch color.
  *
  * @api private
@@ -567,7 +568,7 @@ Switchery.prototype.colorize = function() {
   this.switcher.style.borderColor = this.options.color;
 };
 
-/*
+/**
  * Handle the switch click event.
  *
  * @api private
@@ -577,7 +578,7 @@ Switchery.prototype.handleClick = function() {
   var $this = this
     , switcher = this.switcher;
 
-  if (this.isDisabled() == false) {
+  if (this.isDisabled() === false) {
     switcher.addEventListener('click', function() {
       $this.setPosition(true);
     });
@@ -613,3 +614,4 @@ require.alias("component-query/index.js", "JayceTDE-pend/deps/query/index.js");
 require.alias("component-domify/index.js", "JayceTDE-pend/deps/domify/index.js");
 
 require.alias("JayceTDE-pend/index.js", "JayceTDE-pend/index.js");
+require.alias("switchery/switchery.js", "switchery/index.js");
