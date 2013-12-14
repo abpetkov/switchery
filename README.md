@@ -2,108 +2,106 @@
 
 ## Description
 
-Switchery is a simple jQuery plugin that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.
+Switchery is a simple component that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.
 
-Works with jQuery 1.7.0+. Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE7+
+Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+
 
 [Live Preview](http://abpetkov.github.io/switchery/)
 
-## Setup
+## Installation
 
-Once you've downloaded the source code, include the necessary CSS and JS files in your HTML.
-
-#### Include CSS
+##### Standalone:
 
 ```html
-<!-- Put this in your <head> tag -->
-<link rel="stylesheet" href="PATH_TO_FILE/jquery.switchery.css" />
+<link rel="stylesheet" href="standalone/switchery.css" />
+<script src="standalone/switchery.js"></script>
 ```
 
-#### Include JS
+##### Component:
 
-```html
-<!-- Put this right after the jQuery library -->
-<script src="PATH_TO_FILE/jquery.switchery.js"></script>
+```shell
+$ component install abpetkov/switchery
 ```
 
-## Default Usage
+##### Bower:
 
-Invoke the plugin in a self-invoking anonimous function right before the closing &lt;/body&gt; tag or in a $(document).ready(function() {}); in the &lt;head&gt; tag.
+```shell
+$ bower install switchery
+```
+
+##### npm
+
+```shell
+$ npm install switchery
+```
+
+## Usage
 
 ```js
-(function() {
-  $('.js-switch').switchery();
-})();
+var Switchery = require('switchery');
+var elem = document.querySelector('.js-switch');
+var init = new Switchery(elem);
 ```
 
 ## Settings and Defaults
 
 ```js
 defaults = {
-  color    : '#64bd63',
-  className: 'switchery',
-  disabled : false,
-  speed    : '0.1s'
-}
+    color    : '#64bd63'
+  , className: 'switchery'
+  , disabled : false
+  , speed    : '0.1s'
+};
 ```
 
 - `color` : color of the switch element (HEX or RGB value)
-- `className` : class name for the switch element (by default styled in jquery.switchery.css)
+- `className` : class name for the switch element (by default styled in switchery.css)
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
 - `speed` : length of time that the transition will take (format: {digit}s)
 
 ## Examples
 
-### Checked
+##### Checked
 
 Only thing you need is to add a `checked` attribute to your checkbox input. Simple as that.
 
 ```html
-<input type="checkbox" class="js-switch-checked" checked />
+<input type="checkbox" class="js-switch" checked />
 ```
 
-### Multiple switches
+##### Multiple switches
 
 You can add as many switches as you like, as long as their corresponding checkboxes have the same class.
 
 ```html
-<input type="checkbox" class="js-switch-multiple" />
-<input type="checkbox" class="js-switch-multiple" />
+<input type="checkbox" class="js-switch" />
+<input type="checkbox" class="js-switch" />
 
-$('.js-switch-multiple').switchery();
+var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+elems.forEach(function(html) {
+  var switchery = new Switchery(html);
+});
 ```
 
-### Disabled
+##### Disabled
 
 Use the `disabled` option to make your switch active or inactive.
 
 ```js
-$('.js-switch-disabled').switchery({ disabled: true });
+var switchery = new Switchery(elem, { disabled: true });
 ```
 
-### Coloured
+##### Coloured
 
-You can colorize the switch to fit your site perfectly:
-
-```js
-$('.js-switch-blue').switchery({ color: '#41b7f1' });
-```
-
-### Checking state
-
-Checking the current state of the checkbox for JavaScript or jQuery form validation is quite easy:
+You can colorize the switch to fit your design perfectly:
 
 ```js
-// jQuery
-$('.js-check-state').prop('checked');
-
-// JavaScript
-document.getElementById('js-check-state').checked;
+var switchery = new Switchery(elem, { color: '#41b7f1' });
 ```
 
 ## Contact
 
-If you like this plugin, share your appreciation by following me in [Twitter](https://twitter.com/abpetkov), [GitHub](https://github.com/abpetkov) or [Dribbble](http://dribbble.com/apetkov).
+If you like this component, share your appreciation by following me in [Twitter](https://twitter.com/abpetkov), [GitHub](https://github.com/abpetkov) or [Dribbble](http://dribbble.com/apetkov).
 
 ## License
 
