@@ -17,13 +17,11 @@
   "ignore": [
     "build",
     "components",
-    "images",
     "node_modules",
     "bower_components",
-    "demo.css",
-    "switchery.css",
-    "switchery.js",
-    "index.html",
+    "component.json",
+    "Makefile",
+    "README.md",
     ".*"
   ],
   "dependencies": {},
