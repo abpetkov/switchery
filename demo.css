@@ -4,7 +4,7 @@
  *
  **/
 
-/*
+/**
  *
  * Defaults.
  *
@@ -85,7 +85,7 @@ h4 {
   margin: 20px 0;
 }
 
-/*
+/**
  *
  * Fading page load keyframes.
  *
@@ -146,7 +146,7 @@ keyframes fade-load {
   }
 }
 
-/*
+/**
  *
  * General layout.
  *
@@ -227,16 +227,22 @@ keyframes fade-load {
   margin-bottom: 0;
 }
 
-.description .left {
-  width: 640px;
+.description {
+  position: relative;
+  padding-right: 270px;
+  width: 680px;
 }
 
-.description .right {
-  width: 235px;
+.description > .button {
+  position: absolute;
+  right: 0;
+  top: 45px;
+
+
 }
 
-.description .right a {
-  float: right;
+.description > .button:hover {
+  padding-right: 35px;
 }
 
 .section p,
@@ -256,7 +262,8 @@ keyframes fade-load {
   width: 100%;
 }
 
-.section h3 + pre {
+.section h3 + pre,
+.section h3 + h4 {
   margin-top: 0;
 }
 
@@ -297,7 +304,11 @@ keyframes fade-load {
   margin-top: 0;
 }
 
-/*
+.example .switchery {
+  margin-right: 5px;
+}
+
+/**
  *
  * Header.
  *
@@ -326,7 +337,7 @@ keyframes fade-load {
   background-position: 0 -96px;
 }
 
-/*
+/**
  *
  * Footer.
  *
@@ -366,7 +377,7 @@ keyframes fade-load {
   margin-top: 15px;
 }
 
-/*
+/**
  *
  * Buttons.
  *
@@ -380,12 +391,12 @@ keyframes fade-load {
   padding: 15px 30px;
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-  transition: background-color 0.1s ease-out;
+  transition: all 0.1s ease-out;
 
-  -webkit-transition: background-color 0.1s ease-out;
-  -moz-transition: background-color 0.1s ease-out;
-  -ms-transition: background-color 0.1s ease-out;
-  -o-transition: background-color 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -ms-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
 }
 
 .button:hover {
@@ -443,7 +454,7 @@ keyframes fade-load {
   background-position: 0 -24px;
 }
 
-/*
+/**
  *
  * Code snippets.
  *

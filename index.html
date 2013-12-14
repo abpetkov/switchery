@@ -37,25 +37,163 @@
     </header>
 
     <div class="container">
-      <section class="section clearfix description">
+      <section class="section description">
 
-        <div class="left">
           <h3>What is Switchery?</h3>
           <p>Switchery is a simple component that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.</p>
           <p>Licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
           <p>Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+</p>
-        </div>
 
-        <div class="right">
           <a href="https://github.com/abpetkov/switchery" target="_blank" class="button secondary"><span class="button-icon fork"></span>Fork the GitHub repo</a>
-        </div>
       </section>
 
       <section class="section">
-        <div class="example" id="test">
-          <p><input type="checkbox" class="js-switch-default" checked /></p>
+        <h3>Installation</h3>
+
+        <h4>Standalone</h4>
+
+        <pre>
+          <div class="tag">
+            &lt;<span class="specials">link</span> <span class="attribute">rel=</span><span class="value">&quot;stylesheet&quot;</span> <span class="attribute">href=</span><span class="value">&quot;standalone/switchery.css&quot;</span> /&gt;
+          </div>
+          <div class="tag">
+            &lt;<span class="specials">script</span> <span class="attribute">src=</span><span class="value">&quot;standalone/switchery.js&quot;</span>&gt;&lt;/<span class="specials">script</span>&gt;
+          </div>
+        </pre>
+
+        <h4>Component</h4>
+
+        <pre>
+          <div class="tag">
+            $ component install abpetkov/switchery
+          </div>
+        </pre>
+
+        <h4>Bower</h4>
+
+        <pre>
+          <div class="tag">
+            $ bower install switchery
+          </div>
+        </pre>
+
+      </section>
+
+      <section class="section">
+        <h3>Installation</h3>
+
+        <p>text</p>
+
+        <pre>
+          <div class="script">
+            <div><span class="specials">var</span> Switchery = require('<span class="value">switchery</span>');</div>
+            <div><span class="specials">var</span> elem = <span class="single">document</span>.querySelector('.js-switch');</div>
+            <div><span class="specials">var</span> init = <span class="single">new</span> Switchery(elem);</div>
+          </div>
+        </pre>
+      </section>
+
+      <section class="section">
+        <h3>Settings and Defaults</h3>
+
+        <pre>
+          <div class="script">
+<div>defaults <span class="single">=</span> <span class="specials">{</span></div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
+  <div>&nbsp;&nbsp;, className: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
+  <div>&nbsp;&nbsp;, disabled : <span class="boolean">false</span></div>
+  <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
+<div class="specials">}</div>
+          </div>
+        </pre>
+
+        <ul class="section-list">
+          <li><em>color</em> : color of the switch element (HEX or RGB value)</li>
+          <li><em>className</em> : class name for the switch element (by default styled in <span>switchery.css</span>)</li>
+          <li><em>disabled</em> : enable or disable click events and changing the state of the switch (boolean value)</li>
+          <li><em>speed</em> : length of time that the transition will take (format: {digit}s)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Examples</h3>
+
+        <div class="example">
+          <h4>Checked</h4>
+
+          <p>Only thing you need is to add a <strong>checked</strong> attribute to your checkbox input. Simple as that.</p>
+
+          <pre>
+            <div class="tag">
+              &lt;<span class="specials">input</span> <span class="attribute">type=</span><span class="value">&quot;checkbox&quot;</span> <span class="attribute">class=</span><span class="value">&quot;js-switch&quot;</span> checked /&gt;
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch" checked />
+          </p>
         </div>
 
+        <div class="example">
+          <h4>Multiple switches</h4>
+
+          <p>You can add as many switches as you like, as long as their corresponding checkboxes have the same class. Select them and make new instance of the Switchery class for every of them.</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> elems = <span class="single">Array</span>.prototype.slice.<span class="specials">call</span>(<span class="single">document</span>.querySelectorAll('<span class="value">.js-switch</span>'));</div>
+              <br />
+              <div>elems.forEach(<span class="specials">function</span>(html) <span class="specials">{</span></div>
+              <div>&nbsp;&nbsp;<span class="specials">var</span> switchery = <span class="single">new</span> Switchery(html);</div>
+              <div><span class="specials">}</span>);</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch" />
+            <input type="checkbox" class="js-switch" checked />
+            <input type="checkbox" class="js-switch" />
+          </p>
+        </div>
+
+        <div class="example">
+          <h4>Disabled</h4>
+
+          <p>Use the <strong>disabled</strong> option to make your switch active or inactive.</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { disabled: <span class="boolean">true</span> });</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch-disabled" checked />
+          </p>
+        </div>
+
+        <div class="example">
+          <h4>Colored</h4>
+
+          <p>You can colorize the switch to fit your design perfectly.</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { color: '<span class="value">#41b7f1</span>' });</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch-blue" checked />
+            <input type="checkbox" class="js-switch-pink" checked />
+            <input type="checkbox" class="js-switch-teal" checked />
+            <input type="checkbox" class="js-switch-red" checked />
+          </p>
+        </div>
       </section>
     </div>
 
@@ -77,12 +215,31 @@
 
     <script type="text/javascript" src="standalone/switchery.js"></script>
     <script type="text/javascript">
+
+      // Default
       var Switchery = require('switchery');
-      var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch-default'));
+      var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
       elems.forEach(function(html) {
         var switchery = new Switchery(html);
       });
+
+      // Disabled switch
+      var disabled = document.querySelector('.js-switch-disabled');
+      var switchery = new Switchery(disabled, { disabled: true });
+
+      // Colored switches
+      var blue = document.querySelector('.js-switch-blue');
+      var switchery = new Switchery(blue, { color: '#41b7f1' });
+
+      var pink = document.querySelector('.js-switch-pink');
+      var switchery = new Switchery(pink, { color: '#ff7791' });
+
+      var teal = document.querySelector('.js-switch-teal');
+      var switchery = new Switchery(teal, { color: '#3cc8ad' });
+
+      var red = document.querySelector('.js-switch-red');
+      var switchery = new Switchery(red, { color: '#db5554' });
     </script>
   </body>
 </html>
