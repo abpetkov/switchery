@@ -71,13 +71,11 @@ Only thing you need is to add a `checked` attribute to your checkbox input. Simp
 
 ##### Multiple switches
 
-You can add as many switches as you like, as long as their corresponding checkboxes have the same class.
+You can add as many switches as you like, as long as their corresponding checkboxes have the same class. Select them and make new instance of the Switchery class for every of them.
 
-```html
-<input type="checkbox" class="js-switch" />
-<input type="checkbox" class="js-switch" />
-
+```js
 var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
 elems.forEach(function(html) {
   var switchery = new Switchery(html);
 });
