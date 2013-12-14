@@ -1,4 +1,4 @@
-# Switchery
+![Switchery](http://i.imgur.com/XmFduvR.png)
 
 ## Description
 
@@ -83,7 +83,7 @@ Use the `disabled` option to make your switch active or inactive.
 var switchery = new Switchery(elem, { disabled: true });
 ```
 
-##### Coloured
+##### Colored
 
 You can colorize the switch to fit your design perfectly:
 
