@@ -1,10 +1,12 @@
-![Switchery](http://i.imgur.com/XmFduvR.png)
+![Switchery](http://i.imgur.com/xJAM3Jq.png)
 
 ## Description
 
 Switchery is a simple component that helps you turn your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. You can easily customize switches, so that they match your design perfectly.
 
 Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+
+
+![Preview](http://i.imgur.com/0PcuTbO.jpg)
 
 [Live Preview](http://abpetkov.github.io/switchery/)
 
@@ -75,6 +77,8 @@ elems.forEach(function(html) {
 });
 ```
 
+![Multiple](http://i.imgur.com/Ip4xy4s.jpg)
+
 ##### Disabled
 
 Use the `disabled` option to make your switch active or inactive.
@@ -89,6 +93,20 @@ You can colorize the switch to fit your design perfectly:
 
 ```js
 var switchery = new Switchery(elem, { color: '#41b7f1' });
+```
+
+![Colored](http://i.imgur.com/qO0Pzub.jpg)
+
+##### Legacy browsers
+
+Try a different approach for legacy browsers, like IE8 and IE7.
+
+```js
+var elems = document.querySelectorAll('.js-switch');
+
+for (var i = 0; i < elems.length; i++) {
+  var switchery = new Switchery(elems[i]);
+}
 ```
 
 ## Contact
