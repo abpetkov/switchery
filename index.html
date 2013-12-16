@@ -239,11 +239,14 @@
 
       // Default
       var Switchery = require('switchery');
-      var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
-      elems.forEach(function(html) {
-        var switchery = new Switchery(html);
-      });
+      if (Array.prototype.forEach) {
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+        elems.forEach(function(html) {
+          var switchery = new Switchery(html);
+        });
+      }
 
       // IE8
 
