@@ -1,4 +1,5 @@
 images/
 build/
 components/
+Makefile
 README.md
