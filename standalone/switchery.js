@@ -464,7 +464,7 @@ Switchery.prototype.hide = function() {
 
 Switchery.prototype.show = function() {
   var switcher = this.create();
-  pend(this.element.parentNode).append(switcher);
+  this.element.parentNode.appendChild(switcher);
 };
 
 /**
@@ -522,7 +522,10 @@ Switchery.prototype.setPosition = function (clicked) {
 
   if (checked === true) {
     this.element.checked = true;
-    jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
+
+    if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
+    else jack.style.left = parseInt(switcher.currentStyle['width']) - jack.offsetWidth + 'px';
+
     if (this.options.color) this.colorize();
   } else {
     jack.style.left = '0';
@@ -579,9 +582,17 @@ Switchery.prototype.handleClick = function() {
     , switcher = this.switcher;
 
   if (this.isDisabled() === false) {
-    switcher.addEventListener('click', function() {
-      $this.setPosition(true);
-    });
+
+    if (switcher.addEventListener) {
+      switcher.addEventListener('click', function() {
+        $this.setPosition(true);
+      });
+    } else {
+      switcher.attachEvent('onclick', function() {
+        $this.setPosition(true);
+      });
+    }
+
   } else {
     this.element.disabled = true;
   }

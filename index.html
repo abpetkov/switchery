@@ -11,6 +11,10 @@
     <link href="http://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 
+    <!--[if lt IE 9]>
+      <script src="html5.js"></script>
+    <![endif]-->
+
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-46136560-1']);
@@ -223,6 +227,14 @@
       elems.forEach(function(html) {
         var switchery = new Switchery(html);
       });
+
+      /* IE8
+
+      var elems = document.querySelectorAll('.js-switch');
+
+      for (var i = 0; i < elems.length; i++) {
+        var switchery = new Switchery(elems[i]);
+      }*/
 
       // Disabled switch
       var disabled = document.querySelector('.js-switch-disabled');

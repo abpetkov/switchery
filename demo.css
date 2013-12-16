@@ -168,6 +168,7 @@ keyframes fade-load {
 }
 
 .container {
+	background: #f8ecf1;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0px 0 2px 1px rgba(0, 0, 0, 0.25);
   margin: 0 auto 25px;
