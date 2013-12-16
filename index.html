@@ -84,9 +84,7 @@
       </section>
 
       <section class="section">
-        <h3>Installation</h3>
-
-        <p>text</p>
+        <h3>Usage</h3>
 
         <pre>
           <div class="script">
@@ -198,6 +196,24 @@
             <input type="checkbox" class="js-switch-red" checked />
           </p>
         </div>
+
+        <div class="example">
+          <h4>Legacy browsers</h4>
+
+          <p>Try a different approach for legacy browsers, like IE8 and IE7.</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> elems = <span class="single">document</span>.querySelectorAll('<span class="value">.js-switch</span>');</div>
+              <br />
+              <div><span class="single">for</span> (<span class="specials">var</span> i = <span class="value">0</span>; i <span class="single"><</span> elems.length; i<span class="single">++</span>) {</div>
+                <div>&nbsp;&nbsp;<span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elems<span class="specials">[</span>i<span class="specials">]</span>);</div>
+              <div>}</div>
+            </div>
+          </pre>
+
+          <p><input type="checkbox" class="js-switch-ie8" checked /></p>
+        </div>
       </section>
     </div>
 
@@ -217,6 +233,7 @@
       </div>
     </footer>
 
+    <script type="text/javascript" src="demo.js"></script>
     <script type="text/javascript" src="standalone/switchery.js"></script>
     <script type="text/javascript">
 
@@ -228,13 +245,13 @@
         var switchery = new Switchery(html);
       });
 
-      /* IE8
+      // IE8
 
-      var elems = document.querySelectorAll('.js-switch');
+      var elems = document.querySelectorAll('.js-switch-ie8');
 
       for (var i = 0; i < elems.length; i++) {
         var switchery = new Switchery(elems[i]);
-      }*/
+      }
 
       // Disabled switch
       var disabled = document.querySelector('.js-switch-disabled');
