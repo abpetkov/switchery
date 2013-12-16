@@ -199,194 +199,10 @@ require.relative = function(parent) {
 
   return localRequire;
 };
-require.register("component-query/index.js", function(exports, require, module){
-function one(selector, el) {
-  return el.querySelector(selector);
-}
-
-exports = module.exports = function(selector, el){
-  el = el || document;
-  return one(selector, el);
-};
-
-exports.all = function(selector, el){
-  el = el || document;
-  return el.querySelectorAll(selector);
-};
-
-exports.engine = function(obj){
-  if (!obj.one) throw new Error('.one callback required');
-  if (!obj.all) throw new Error('.all callback required');
-  one = obj.one;
-  exports.all = obj.all;
-  return exports;
-};
-
-});
-require.register("component-domify/index.js", function(exports, require, module){
-
-/**
- * Expose `parse`.
- */
-
-module.exports = parse;
-
-/**
- * Wrap map from jquery.
- */
-
-var map = {
-  option: [1, '<select multiple="multiple">', '</select>'],
-  optgroup: [1, '<select multiple="multiple">', '</select>'],
-  legend: [1, '<fieldset>', '</fieldset>'],
-  thead: [1, '<table>', '</table>'],
-  tbody: [1, '<table>', '</table>'],
-  tfoot: [1, '<table>', '</table>'],
-  colgroup: [1, '<table>', '</table>'],
-  caption: [1, '<table>', '</table>'],
-  tr: [2, '<table><tbody>', '</tbody></table>'],
-  td: [3, '<table><tbody><tr>', '</tr></tbody></table>'],
-  th: [3, '<table><tbody><tr>', '</tr></tbody></table>'],
-  col: [2, '<table><tbody></tbody><colgroup>', '</colgroup></table>'],
-  _default: [0, '', '']
-};
-
-/**
- * Parse `html` and return the children.
- *
- * @param {String} html
- * @return {Array}
- * @api private
- */
-
-function parse(html) {
-  if ('string' != typeof html) throw new TypeError('String expected');
-
-  html = html.replace(/^\s+|\s+$/g, ''); // Remove leading/trailing whitespace
-
-  // tag name
-  var m = /<([\w:]+)/.exec(html);
-  if (!m) return document.createTextNode(html);
-  var tag = m[1];
-
-  // body support
-  if (tag == 'body') {
-    var el = document.createElement('html');
-    el.innerHTML = html;
-    return el.removeChild(el.lastChild);
-  }
-
-  // wrap map
-  var wrap = map[tag] || map._default;
-  var depth = wrap[0];
-  var prefix = wrap[1];
-  var suffix = wrap[2];
-  var el = document.createElement('div');
-  el.innerHTML = prefix + html + suffix;
-  while (depth--) el = el.lastChild;
-
-  // Note: when moving children, don't rely on el.children
-  // being 'live' to support Polymer's broken behaviour.
-  // See: https://github.com/component/domify/pull/23
-  if (1 == el.children.length) {
-    return el.removeChild(el.children[0]);
-  }
-
-  var fragment = document.createDocumentFragment();
-  while (el.children.length) {
-    fragment.appendChild(el.removeChild(el.children[0]));
-  }
-
-  return fragment;
-}
-
-});
-require.register("JayceTDE-pend/index.js", function(exports, require, module){
-'use strict';
-
-var domify = require('domify')
-  , query = require('query')
-  , toString = Object.prototype.toString
-;
-
-function isArray(obj) {
-    return toString.call(obj) === '[object Array]';
-}
-
-function isArguments(obj) {
-    return toString.call(obj) === '[object Arguments]';
-}
-
-function processArguments(args, fn) {
-    if (isArray(args) || isArguments(args)) {
-        var i, l = args.length;
-        if (l > 1) {
-            i = 0;
-            while (i < l) {
-                processArguments(args[i], fn);
-                i += 1;
-            }
-            return;
-        } else {
-            args = args[0];
-        }
-    }
-    if (typeof(args) === 'string') {
-        try {
-            return processArguments(domify(args), fn);
-        } catch (e) {
-            args = document.createTextNode(args);
-        }
-    }
-    fn(args);
-}
-
-function Pend(el) {
-    if (typeof(el) === 'string') {
-        el = query(el);
-    }
-    this.el = el;
-}
-
-Pend.prototype.append = function () {
-    var self = this;
-    processArguments(arguments, function (el) {
-        self.el.appendChild(el);
-    });
-    return this;
-};
-
-Pend.prototype.prepend = function () {
-    var self = this;
-    processArguments(arguments, function (el) {
-        self.el.insertBefore(el, self.el.firstChild);
-    });
-    return this;
-};
-
-Pend.prototype.appendTo = function (el) {
-    if (typeof(el) === 'string') {
-        el = query(el);
-    }
-    el.appendChild(this.el);
-};
-
-Pend.prototype.prependTo = function (el) {
-    if (typeof(el) === 'string') {
-        el = query(el);
-    }
-    el.insertBefore(this.el, el.firstChild);
-};
-
-module.exports = function (el) {
-    return new Pend(el);
-};
-
-});
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.1.0
+ * Switchery 0.1.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -397,12 +213,6 @@ require.register("switchery/switchery.js", function(exports, require, module){
  * http://opensource.org/licenses/MIT
  *
  */
-
-/**
- * Module dependencies.
- */
-
-var pend = require('pend');
 
 /**
  * Expose `Switchery`.
@@ -464,7 +274,7 @@ Switchery.prototype.hide = function() {
 
 Switchery.prototype.show = function() {
   var switcher = this.create();
-  pend(this.element.parentNode).append(switcher);
+  this.element.parentNode.appendChild(switcher);
 };
 
 /**
@@ -522,7 +332,10 @@ Switchery.prototype.setPosition = function (clicked) {
 
   if (checked === true) {
     this.element.checked = true;
-    jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
+
+    if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
+    else jack.style.left = parseInt(switcher.currentStyle['width']) - jack.offsetWidth + 'px';
+
     if (this.options.color) this.colorize();
   } else {
     jack.style.left = '0';
@@ -579,9 +392,15 @@ Switchery.prototype.handleClick = function() {
     , switcher = this.switcher;
 
   if (this.isDisabled() === false) {
-    switcher.addEventListener('click', function() {
-      $this.setPosition(true);
-    });
+    if (switcher.addEventListener) {
+      switcher.addEventListener('click', function() {
+        $this.setPosition(true);
+      });
+    } else {
+      switcher.attachEvent('onclick', function() {
+        $this.setPosition(true);
+      });
+    }
   } else {
     this.element.disabled = true;
   }
@@ -602,16 +421,4 @@ Switchery.prototype.init = function() {
   this.handleClick();
 };
 });
-
-
-
-
-require.alias("JayceTDE-pend/index.js", "switchery/deps/pend/index.js");
-require.alias("JayceTDE-pend/index.js", "switchery/deps/pend/index.js");
-require.alias("JayceTDE-pend/index.js", "pend/index.js");
-require.alias("component-query/index.js", "JayceTDE-pend/deps/query/index.js");
-
-require.alias("component-domify/index.js", "JayceTDE-pend/deps/domify/index.js");
-
-require.alias("JayceTDE-pend/index.js", "JayceTDE-pend/index.js");
 require.alias("switchery/switchery.js", "switchery/index.js");
