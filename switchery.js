@@ -31,6 +31,8 @@ var defaults = {
   , speed    : '0.1s'
 };
 
+require('./switchery.css');
+
 /**
  * Create Switchery object.
  *
