@@ -99,7 +99,7 @@ var switchery = new Switchery(elem, { color: '#41b7f1' });
 
 ##### Legacy browsers
 
-Try a different approach for legacy browsers, like IE8 and IE7.
+If you are an adventurer and like to use legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.
 
 ```js
 var elems = document.querySelectorAll('.js-switch');
