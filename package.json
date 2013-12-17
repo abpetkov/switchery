@@ -1,5 +1,5 @@
 {
-  "name": "switchery-browserify",
+  "name": "switchery",
   "version": "0.0.2",
   "description": "Browserify version of Switchery",
   "main": "switchery.js",
