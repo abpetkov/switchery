@@ -28,7 +28,7 @@ var defaults = {
     color    : '#64bd63'
   , className: 'switchery'
   , disabled : false
-  , speed    : '0.1s'
+  , speed    : '0.4s'
 };
 
 /**
@@ -135,11 +135,14 @@ Switchery.prototype.setPosition = function (clicked) {
     else jack.style.left = parseInt(switcher.currentStyle['width']) - jack.offsetWidth + 'px';
 
     if (this.options.color) this.colorize();
+    this.setSpeed();
   } else {
     jack.style.left = '0';
     this.element.checked = false;
     this.switcher.style.backgroundColor = '';
     this.switcher.style.borderColor =  '';
+    this.switcher.style.boxShadow = 'inset 0 0 0 0 #dfdfdf';
+    this.setSpeed();
   }
 };
 
@@ -150,8 +153,10 @@ Switchery.prototype.setPosition = function (clicked) {
  */
 
 Switchery.prototype.setSpeed = function() {
-  this.switcher.style.transitionDuration = this.options.speed;
-  this.jack.style.transitionDuration = this.options.speed;
+  if (this.isChecked()) this.switcher.style.transition = 'box-shadow ' + this.options.speed + ', border ' + this.options.speed + ', background-color ' + this.options.speed.replace(/[a-z]/, '') * 3 + 's';
+  else this.switcher.style.transition = 'box-shadow ' + this.options.speed + ', border ' + this.options.speed;
+
+  this.jack.style.transition = 'left ' + this.options.speed.replace(/[a-z]/, '') / 2 + 's';
 };
 
 /**
@@ -177,6 +182,7 @@ Switchery.prototype.setAttributes = function() {
 Switchery.prototype.colorize = function() {
   this.switcher.style.backgroundColor = this.options.color;
   this.switcher.style.borderColor = this.options.color;
+  this.switcher.style.boxShadow = 'inset 0 0 0 16px ' + this.options.color;
 };
 
 /**
@@ -213,7 +219,6 @@ Switchery.prototype.handleClick = function() {
 Switchery.prototype.init = function() {
   this.hide();
   this.show();
-  this.setSpeed();
   this.setPosition();
   this.setAttributes();
   this.handleClick();
