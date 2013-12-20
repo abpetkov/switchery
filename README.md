@@ -43,17 +43,19 @@ var init = new Switchery(elem);
 
 ```js
 defaults = {
-    color    : '#64bd63'
-  , className: 'switchery'
-  , disabled : false
-  , speed    : '0.1s'
+    color          : '#64bd63'
+  , secondaryColor : '#dfdfdf'
+  , className      : 'switchery'
+  , disabled       : false
+  , speed          : '0.4s'
 };
 ```
 
 - `color` : color of the switch element (HEX or RGB value)
+- `secondaryColor` : secondary color for the box shadow and border, when the switch is off
 - `className` : class name for the switch element (by default styled in switchery.css)
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
-- `speed` : length of time that the transition will take (format: {digit}s)
+- `speed` : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)
 
 ## Examples
 
@@ -89,13 +91,21 @@ var switchery = new Switchery(elem, { disabled: true });
 
 ##### Colored
 
-You can colorize the switch to fit your design perfectly:
+You can change the primary of the switch to fit your design perfectly:
 
 ```js
 var switchery = new Switchery(elem, { color: '#41b7f1' });
 ```
 
 ![Colored](http://i.imgur.com/qO0Pzub.jpg)
+
+Or the secondary color, which will change the switch shadow and default border:
+
+```js
+var switchery = new Switchery(elem, { secondaryColor: '#bbf0f0' });
+```
+
+Any other changes, regarding colors, you want to make, shoult take place in `switchery.css`.
 
 ##### Legacy browsers
 
