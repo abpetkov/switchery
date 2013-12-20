@@ -101,19 +101,21 @@
         <pre>
           <div class="script">
 <div>defaults <span class="single">=</span> <span class="specials">{</span></div>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
-  <div>&nbsp;&nbsp;, className: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
-  <div>&nbsp;&nbsp;, disabled : <span class="boolean">false</span></div>
-  <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
+  <div>&nbsp;&nbsp;, secondaryColor: <span class="quote">'</span><span class="value">#dfdfdf</span><span class="quote">'</span></div>
+  <div>&nbsp;&nbsp;, className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
+  <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
+  <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
 <div class="specials">}</div>
           </div>
         </pre>
 
         <ul class="section-list">
           <li><em>color</em> : color of the switch element (HEX or RGB value)</li>
+          <li><em>secondaryColor</em> : secondary color for the box shadow and border, when the switch is off</li>
           <li><em>className</em> : class name for the switch element (by default styled in <span>switchery.css</span>)</li>
           <li><em>disabled</em> : enable or disable click events and changing the state of the switch (boolean value)</li>
-          <li><em>speed</em> : length of time that the transition will take (format: {digit}s)</li>
+          <li><em>speed</em> : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)</li>
         </ul>
       </section>
 
@@ -180,7 +182,7 @@
         <div class="example">
           <h4>Colored</h4>
 
-          <p>You can colorize the switch to fit your design perfectly.</p>
+          <p>You can change the primary of the switch to fit your design perfectly:</p>
 
           <pre>
             <div class="script">
@@ -194,6 +196,19 @@
             <input type="checkbox" class="js-switch-pink" checked />
             <input type="checkbox" class="js-switch-teal" checked />
             <input type="checkbox" class="js-switch-red" checked />
+          </p>
+
+          <p>Or the secondary color, which will change the switch shadow and default border:</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { color: '<span class="value">#fec200</span>', secondaryColor: '<span class="value">#fec200</span>' });</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch-secondary" checked />
           </p>
         </div>
 
@@ -271,6 +286,9 @@
 
       var red = document.querySelector('.js-switch-red');
       var switchery = new Switchery(red, { color: '#db5554' });
+
+      var secondary = document.querySelector('.js-switch-secondary');
+      var switchery = new Switchery(secondary, { color: '#fec200', secondaryColor: '#ff8787' });
     </script>
   </body>
 </html>
