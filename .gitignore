@@ -2,5 +2,9 @@
 images/
 build/
 components/
+component.json
+bower.json
+switchery.js
+switchery.css
 Makefile
 README.md

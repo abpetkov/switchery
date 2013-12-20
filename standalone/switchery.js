@@ -202,7 +202,7 @@ require.relative = function(parent) {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.1.1
+ * Switchery 0.2.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -342,10 +342,9 @@ Switchery.prototype.setPosition = function (clicked) {
   } else {
     jack.style.left = 0;
     this.element.checked = false;
-    this.switcher.style.backgroundColor = '';
-    this.switcher.style.borderColor =  '';
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
+    this.switcher.style.backgroundColor = '';
     this.setSpeed();
   }
 };
@@ -357,10 +356,24 @@ Switchery.prototype.setPosition = function (clicked) {
  */
 
 Switchery.prototype.setSpeed = function() {
-  if (this.isChecked()) this.switcher.style.transition = 'box-shadow ' + this.options.speed + ', border ' + this.options.speed + ', background-color ' + this.options.speed.replace(/[a-z]/, '') * 3 + 's';
-  else this.switcher.style.transition = 'box-shadow ' + this.options.speed + ', border ' + this.options.speed;
+  var switcherTransition = []
+    , jackTransition = ['left ' + this.options.speed.replace(/[a-z]/, '') / 2 + 's']
+    , isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 
-  this.jack.style.transition = 'left ' + this.options.speed.replace(/[a-z]/, '') / 2 + 's';
+  if (this.isChecked()) {
+    switcherTransition.push('border ' + this.options.speed);
+    switcherTransition.push('box-shadow ' + this.options.speed);
+    switcherTransition.push('background-color ' + this.options.speed.replace(/[a-z]/, '') * 3 + 's');
+  } else {
+    switcherTransition.push('border ' + this.options.speed);
+    switcherTransition.push('box-shadow ' + this.options.speed);
+  }
+
+  this.switcher.style.transition = switcherTransition.join(', ');
+  if (isSafari) this.switcher.style.webkitTransition = switcherTransition.join(', ');
+
+  this.jack.style.transition = jackTransition;
+  if (isSafari) this.jack.style.webkitTransition = jackTransition;
 };
 
 /**
