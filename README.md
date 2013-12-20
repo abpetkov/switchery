@@ -105,7 +105,7 @@ Or the secondary color, which will change the switch shadow and default border:
 var switchery = new Switchery(elem, { secondaryColor: '#bbf0f0' });
 ```
 
-Any other changes, regarding colors, you want to make, shoult take place in `switchery.css`.
+Any other changes regarding colors you want to make, should take place in `switchery.css`.
 
 ##### Legacy browsers
 
