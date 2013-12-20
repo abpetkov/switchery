@@ -25,10 +25,11 @@ module.exports = Switchery;
  */
 
 var defaults = {
-    color    : '#64bd63'
-  , className: 'switchery'
-  , disabled : false
-  , speed    : '0.4s'
+    color          : '#64bd63'
+  , secondaryColor : '#dfdfdf'
+  , className      : 'switchery'
+  , disabled       : false
+  , speed          : '0.4s'
 };
 
 /**
@@ -137,11 +138,12 @@ Switchery.prototype.setPosition = function (clicked) {
     if (this.options.color) this.colorize();
     this.setSpeed();
   } else {
-    jack.style.left = '0';
+    jack.style.left = 0;
     this.element.checked = false;
     this.switcher.style.backgroundColor = '';
     this.switcher.style.borderColor =  '';
-    this.switcher.style.boxShadow = 'inset 0 0 0 0 #dfdfdf';
+    this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
+    this.switcher.style.borderColor = this.options.secondaryColor;
     this.setSpeed();
   }
 };
