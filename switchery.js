@@ -1,6 +1,6 @@
 
 /**
- * Switchery 0.2.1
+ * Switchery 0.3.0
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -11,6 +11,12 @@
  * http://opensource.org/licenses/MIT
  *
  */
+
+/**
+ * External dependencies.
+ */
+
+var transitionize = require('transitionize');
 
 /**
  * Expose `Switchery`.
@@ -41,7 +47,7 @@ var defaults = {
  */
 
 function Switchery(element, options) {
-  if (!(this instanceof Switchery)) return new Switchery(options);
+  if (!(this instanceof Switchery)) return new Switchery(element, options);
 
   this.element = element;
   this.options = options || {};
@@ -154,24 +160,24 @@ Switchery.prototype.setPosition = function (clicked) {
  */
 
 Switchery.prototype.setSpeed = function() {
-  var switcherTransition = []
-    , jackTransition = ['left ' + this.options.speed.replace(/[a-z]/, '') / 2 + 's']
-    , isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+  var switcherProp = {}
+    , jackProp = { 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's' };
 
   if (this.isChecked()) {
-    switcherTransition.push('border ' + this.options.speed);
-    switcherTransition.push('box-shadow ' + this.options.speed);
-    switcherTransition.push('background-color ' + this.options.speed.replace(/[a-z]/, '') * 3 + 's');
+    switcherProp = {
+        'border': this.options.speed
+      , 'box-shadow': this.options.speed
+      , 'background-color': this.options.speed.replace(/[a-z]/, '') * 3 + 's'
+    };
   } else {
-    switcherTransition.push('border ' + this.options.speed);
-    switcherTransition.push('box-shadow ' + this.options.speed);
+    switcherProp = {
+        'border': this.options.speed
+      , 'box-shadow': this.options.speed
+    };
   }
 
-  this.switcher.style.transition = switcherTransition.join(', ');
-  if (isSafari) this.switcher.style.webkitTransition = switcherTransition.join(', ');
-
-  this.jack.style.transition = jackTransition;
-  if (isSafari) this.jack.style.webkitTransition = jackTransition;
+  transitionize(this.switcher, switcherProp);
+  transitionize(this.jack, jackProp);
 };
 
 /**

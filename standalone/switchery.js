@@ -199,10 +199,76 @@ require.relative = function(parent) {
 
   return localRequire;
 };
+require.register("abpetkov-transitionize/transitionize.js", function(exports, require, module){
+
+/**
+ * Transitionize 0.0.1
+ * https://github.com/abpetkov/transitionize
+ *
+ * Authored by Alexander Petkov
+ * https://github.com/abpetkov
+ *
+ * Copyright 2013, Alexander Petkov
+ * License: The MIT License (MIT)
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+/**
+ * Expose `Transitionize`.
+ */
+
+module.exports = Transitionize;
+
+/**
+ * Initialize new Transitionize.
+ *
+ * @param {Object} element
+ * @param {Object} props
+ * @api public
+ */
+
+function Transitionize(element, props) {
+  if (!(this instanceof Transitionize)) return new Transitionize(element, props);
+
+  this.element = element;
+  this.props = props || {};
+  this.init();
+}
+
+/**
+ * Detect if Safari.
+ *
+ * @returns {Boolean}
+ * @api private
+ */
+
+Transitionize.prototype.isSafari = function() {
+  return (/Safari/).test(navigator.userAgent) && (/Apple Computer/).test(navigator.vendor);
+};
+
+/**
+ * Loop though the object and push the keys and values in an array.
+ * Apply the CSS3 transition to the element and prefix with -webkit- for Safari.
+ *
+ * @api private
+ */
+
+Transitionize.prototype.init = function() {
+  var transitions = [];
+
+  for (var key in this.props) {
+    transitions.push(key + ' ' + this.props[key]);
+  }
+
+  this.element.style.transition = transitions.join(', ');
+  if (this.isSafari()) this.element.style.webkitTransition = transitions.join(', ');
+};
+});
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.2.1
+ * Switchery 0.3.0
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -213,6 +279,12 @@ require.register("switchery/switchery.js", function(exports, require, module){
  * http://opensource.org/licenses/MIT
  *
  */
+
+/**
+ * External dependencies.
+ */
+
+var transitionize = require('transitionize');
 
 /**
  * Expose `Switchery`.
@@ -243,7 +315,7 @@ var defaults = {
  */
 
 function Switchery(element, options) {
-  if (!(this instanceof Switchery)) return new Switchery(options);
+  if (!(this instanceof Switchery)) return new Switchery(element, options);
 
   this.element = element;
   this.options = options || {};
@@ -356,24 +428,24 @@ Switchery.prototype.setPosition = function (clicked) {
  */
 
 Switchery.prototype.setSpeed = function() {
-  var switcherTransition = []
-    , jackTransition = ['left ' + this.options.speed.replace(/[a-z]/, '') / 2 + 's']
-    , isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+  var switcherProp = {}
+    , jackProp = { 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's' };
 
   if (this.isChecked()) {
-    switcherTransition.push('border ' + this.options.speed);
-    switcherTransition.push('box-shadow ' + this.options.speed);
-    switcherTransition.push('background-color ' + this.options.speed.replace(/[a-z]/, '') * 3 + 's');
+    switcherProp = {
+        'border': this.options.speed
+      , 'box-shadow': this.options.speed
+      , 'background-color': this.options.speed.replace(/[a-z]/, '') * 3 + 's'
+    };
   } else {
-    switcherTransition.push('border ' + this.options.speed);
-    switcherTransition.push('box-shadow ' + this.options.speed);
+    switcherProp = {
+        'border': this.options.speed
+      , 'box-shadow': this.options.speed
+    };
   }
 
-  this.switcher.style.transition = switcherTransition.join(', ');
-  if (isSafari) this.switcher.style.webkitTransition = switcherTransition.join(', ');
-
-  this.jack.style.transition = jackTransition;
-  if (isSafari) this.jack.style.webkitTransition = jackTransition;
+  transitionize(this.switcher, switcherProp);
+  transitionize(this.jack, jackProp);
 };
 
 /**
@@ -441,4 +513,8 @@ Switchery.prototype.init = function() {
   this.handleClick();
 };
 });
+require.alias("abpetkov-transitionize/transitionize.js", "switchery/deps/transitionize/transitionize.js");
+require.alias("abpetkov-transitionize/transitionize.js", "switchery/deps/transitionize/index.js");
+require.alias("abpetkov-transitionize/transitionize.js", "transitionize/index.js");
+require.alias("abpetkov-transitionize/transitionize.js", "abpetkov-transitionize/index.js");
 require.alias("switchery/switchery.js", "switchery/index.js");
