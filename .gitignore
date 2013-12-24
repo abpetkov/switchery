@@ -1,4 +1,5 @@
 .DS_STORE
+<<<<<<< HEAD
 images/
 build/
 components/
@@ -8,3 +9,7 @@ switchery.js
 switchery.css
 Makefile
 README.md
+=======
+build
+components
+>>>>>>> master
