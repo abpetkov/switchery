@@ -1,0 +1,33 @@
+{
+  "name": "switchery",
+  "version": "0.0.2",
+  "description": "Browserify version of Switchery",
+  "main": "switchery.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/antonamurskiy/switchery.git"
+  },
+  "keywords": [
+    "switchery"
+  ],
+  "author": "Alexander Petkov",
+  "license": "MIT",
+  "contributors": [
+    "Anton Amurskiy <antonamurskiy@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/antonamurskiy/switchery/issues"
+  },
+  "browserify": {
+    "transform": "cssify"
+  },
+  "dependencies": {
+    "cssify": "~0.3.0"
+  }
+}

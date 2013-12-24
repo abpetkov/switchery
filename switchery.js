@@ -39,6 +39,10 @@ var defaults = {
   , speed          : '0.4s'
 };
 
+if (process.browser != null) {
+  require('./switchery.css');
+}
+
 /**
  * Create Switchery object.
  *
