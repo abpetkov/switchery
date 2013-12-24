@@ -268,7 +268,7 @@ Transitionize.prototype.init = function() {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.3.0
+ * Switchery 0.3.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -347,7 +347,7 @@ Switchery.prototype.hide = function() {
 
 Switchery.prototype.show = function() {
   var switcher = this.create();
-  this.element.parentNode.appendChild(switcher);
+  this.insertAfter(this.element, switcher);
 };
 
 /**
@@ -364,6 +364,18 @@ Switchery.prototype.create = function() {
   this.switcher.className = this.options.className;
 
   return this.switcher;
+};
+
+/**
+ * Insert after element after another element.
+ *
+ * @param {Object} reference
+ * @param {Object} target
+ * @api private
+ */
+
+Switchery.prototype.insertAfter = function(reference, target) {
+  reference.parentNode.insertBefore(target, reference.nextSibling);
 };
 
 /**
