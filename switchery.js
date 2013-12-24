@@ -35,6 +35,7 @@ var defaults = {
   , secondaryColor : '#dfdfdf'
   , className      : 'switchery'
   , disabled       : false
+  , disabledOpacity: 0.5
   , speed          : '0.4s'
 };
 
@@ -240,6 +241,7 @@ Switchery.prototype.handleClick = function() {
     }
   } else {
     this.element.disabled = true;
+    this.switcher.style.opacity = this.options.disabledOpacity;
   }
 };
 
