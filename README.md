@@ -47,6 +47,7 @@ defaults = {
   , secondaryColor : '#dfdfdf'
   , className      : 'switchery'
   , disabled       : false
+  , disabledOpacity: 0.5
   , speed          : '0.4s'
 };
 ```
@@ -55,6 +56,7 @@ defaults = {
 - `secondaryColor` : secondary color for the box shadow and border, when the switch is off
 - `className` : class name for the switch element (by default styled in switchery.css)
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
+- `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
 - `speed` : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)
 
 ## Examples
@@ -87,6 +89,12 @@ Use the `disabled` option to make your switch active or inactive.
 
 ```js
 var switchery = new Switchery(elem, { disabled: true });
+```
+
+Customize the default opacity of the disabled switch, using the `disabledOpacity` option.
+
+```js
+var switchery = new Switchery(elem, { disabled: true, disabledOpacity: 0.75 });
 ```
 
 ##### Colored
