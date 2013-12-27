@@ -6,7 +6,7 @@
 
     <title>Switchery - iOS 7 style switches for your checkboxes</title>
     <link href="demo.css" rel="stylesheet" />
-    <link href="standalone/switchery.css" rel="stylesheet" />
+    <link href="dist/switchery.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Istok Web:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
@@ -58,10 +58,10 @@
 
         <pre>
           <div class="tag">
-            &lt;<span class="specials">link</span> <span class="attribute">rel=</span><span class="value">&quot;stylesheet&quot;</span> <span class="attribute">href=</span><span class="value">&quot;standalone/switchery.css&quot;</span> /&gt;
+            &lt;<span class="specials">link</span> <span class="attribute">rel=</span><span class="value">&quot;stylesheet&quot;</span> <span class="attribute">href=</span><span class="value">&quot;dist/switchery.css&quot;</span> /&gt;
           </div>
           <div class="tag">
-            &lt;<span class="specials">script</span> <span class="attribute">src=</span><span class="value">&quot;standalone/switchery.js&quot;</span>&gt;&lt;/<span class="specials">script</span>&gt;
+            &lt;<span class="specials">script</span> <span class="attribute">src=</span><span class="value">&quot;dist/switchery.js&quot;</span>&gt;&lt;/<span class="specials">script</span>&gt;
           </div>
         </pre>
 
@@ -88,9 +88,16 @@
 
         <pre>
           <div class="script">
-            <div><span class="specials">var</span> Switchery = require('<span class="value">switchery</span>');</div>
             <div><span class="specials">var</span> elem = <span class="single">document</span>.querySelector('.js-switch');</div>
             <div><span class="specials">var</span> init = <span class="single">new</span> Switchery(elem);</div>
+          </div>
+        </pre>
+
+        <p>Use the above for the standalone version. For development you need to add the following line first:</p>
+
+        <pre>
+          <div class="script">
+            <div><span class="specials">var</span> Switchery = require('<span class="value">switchery</span>');</div>
           </div>
         </pre>
       </section>
@@ -262,12 +269,10 @@
       </div>
     </footer>
 
-    <script type="text/javascript" src="standalone/switchery.js"></script>
+    <script type="text/javascript" src="dist/switchery.js"></script>
     <script type="text/javascript">
 
       // Default
-      var Switchery = require('switchery');
-
       // if-else statement used only for fixing <IE9 issues
       if (Array.prototype.forEach) {
         var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));

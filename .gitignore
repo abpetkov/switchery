@@ -1,15 +1,4 @@
 .DS_STORE
-<<<<<<< HEAD
-images/
 build/
 components/
-component.json
-bower.json
-switchery.js
-switchery.css
-Makefile
-README.md
-=======
-build
-components
->>>>>>> master
+node_modules/
