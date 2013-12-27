@@ -1,7 +1,8 @@
 
-0.3.3 / 2013-12-27
+0.3.2 / 2013-12-27
 ==================
 
+  * Standalone -> dist, update Readme, add changelog
   * Merge pull request from vesln:min
   * Add minified versions
   * Minify CSS & JS
