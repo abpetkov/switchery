@@ -12,10 +12,10 @@ COMPONENT_BUILD = node_modules/.bin/component-build
 COMPONENT_INSTALL = node_modules/.bin/component-install
 UGLIFYJS = node_modules/uglify-js/bin/uglifyjs
 UGLIFYCSS = node_modules/uglifycss/uglifycss
-JS_DEST = standalone/switchery.js
-JS_MIN_DEST = standalone/switchery.min.js
-CSS_DEST = standalone/switchery.css
-CSS_MIN_DEST = standalone/switchery.min.css
+JS_DEST = dist/switchery.js
+JS_MIN_DEST = dist/switchery.min.js
+CSS_DEST = dist/switchery.css
+CSS_MIN_DEST = dist/switchery.min.css
 
 #
 # All

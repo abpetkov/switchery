@@ -15,8 +15,8 @@ Supported by all modern browsers: Chrome, Firefox, Opera, Safari, IE8+
 ##### Standalone:
 
 ```html
-<link rel="stylesheet" href="standalone/switchery.css" />
-<script src="standalone/switchery.js"></script>
+<link rel="stylesheet" href="dist/switchery.css" />
+<script src="dist/switchery.js"></script>
 ```
 
 ##### Component:
@@ -126,6 +126,12 @@ for (var i = 0; i < elems.length; i++) {
   var switchery = new Switchery(elems[i]);
 }
 ```
+
+## Credits
+
+Big thanks to:
+
+- [Veselin Todorov](https://github.com/vesln)
 
 ## Contact
 
