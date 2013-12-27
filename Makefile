@@ -10,8 +10,12 @@ NAME = Switchery
 
 COMPONENT_BUILD = node_modules/.bin/component-build
 COMPONENT_INSTALL = node_modules/.bin/component-install
+UGLIFYJS = node_modules/uglify-js/bin/uglifyjs
+UGLIFYCSS = node_modules/uglifycss/uglifycss
 JS_DEST = standalone/switchery.js
+JS_MIN_DEST = standalone/switchery.min.js
 CSS_DEST = standalone/switchery.css
+CSS_MIN_DEST = standalone/switchery.min.css
 
 #
 # All
@@ -47,6 +51,8 @@ standalone: build components
 	@$(COMPONENT_BUILD) -s $(NAME) -o .
 	@mv build.js $(JS_DEST)
 	@mv build.css $(CSS_DEST)
+	@$(UGLIFYJS) $(JS_DEST) --output $(JS_MIN_DEST)
+	@$(UGLIFYCSS) $(CSS_DEST) > $(CSS_MIN_DEST)
 
 #
 # Install Node.js modules
