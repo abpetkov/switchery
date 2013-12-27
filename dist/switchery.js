@@ -269,7 +269,7 @@ Transitionize.prototype.init = function() {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.3.3
+ * Switchery 0.3.2
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
