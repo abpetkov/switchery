@@ -1,3 +1,4 @@
+;(function(){
 
 /**
  * Require the given path.
@@ -531,4 +532,10 @@ require.alias("abpetkov-transitionize/transitionize.js", "switchery/deps/transit
 require.alias("abpetkov-transitionize/transitionize.js", "switchery/deps/transitionize/index.js");
 require.alias("abpetkov-transitionize/transitionize.js", "transitionize/index.js");
 require.alias("abpetkov-transitionize/transitionize.js", "abpetkov-transitionize/index.js");
-require.alias("switchery/switchery.js", "switchery/index.js");
+require.alias("switchery/switchery.js", "switchery/index.js");if (typeof exports == "object") {
+  module.exports = require("switchery");
+} else if (typeof define == "function" && define.amd) {
+  define(function(){ return require("switchery"); });
+} else {
+  this["Switchery"] = require("switchery");
+}})();
