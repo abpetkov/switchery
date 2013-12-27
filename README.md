@@ -34,10 +34,11 @@ $ bower install switchery
 ## Usage
 
 ```js
-var Switchery = require('switchery');
 var elem = document.querySelector('.js-switch');
 var init = new Switchery(elem);
 ```
+
+Use the above for the standalone version. For development you need `var Switchery = require('switchery');` at the very beginning.
 
 ## Settings and Defaults
 
