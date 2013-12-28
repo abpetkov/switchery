@@ -1,4 +1,3 @@
-
 /**
  * Switchery 0.3.2
  * http://abpetkov.github.io/switchery/
@@ -54,7 +53,7 @@ function Switchery(element, options) {
   this.options = options || {};
 
   for (var i in defaults) {
-    if (!(i in this.options)) {
+    if (this.options[i] == null) {
       this.options[i] = defaults[i];
     }
   }
