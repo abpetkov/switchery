@@ -1,3 +1,4 @@
+
 /**
  * Switchery 0.3.2
  * http://abpetkov.github.io/switchery/
