@@ -269,7 +269,7 @@ Transitionize.prototype.init = function() {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.3.2
+ * Switchery 0.3.3
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -323,7 +323,7 @@ function Switchery(element, options) {
   this.options = options || {};
 
   for (var i in defaults) {
-    if (!(i in this.options)) {
+    if (this.options[i] == null) {
       this.options[i] = defaults[i];
     }
   }
@@ -527,6 +527,7 @@ Switchery.prototype.init = function() {
   this.setAttributes();
   this.handleClick();
 };
+
 });
 require.alias("abpetkov-transitionize/transitionize.js", "switchery/deps/transitionize/transitionize.js");
 require.alias("abpetkov-transitionize/transitionize.js", "switchery/deps/transitionize/index.js");
