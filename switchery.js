@@ -1,4 +1,3 @@
-
 /**
  * Switchery 0.3.3
  * http://abpetkov.github.io/switchery/
@@ -147,6 +146,16 @@ Switchery.prototype.setPosition = function (clicked) {
 
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
+
+  if (this.element.checked != checked) {
+    if ("createEvent" in document) {
+      var event = document.createEvent("HTMLEvents");
+      event.initEvent("change", false, true);
+      this.element.dispatchEvent(event);
+    } else {
+      this.element.fireEvent("onchange");
+    }
+  }
 
   if (checked === true) {
     this.element.checked = true;
