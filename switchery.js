@@ -148,6 +148,8 @@ Switchery.prototype.setPosition = function (clicked) {
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
 
+  this.handleOnchange(checked);
+
   if (checked === true) {
     this.element.checked = true;
 
@@ -217,6 +219,25 @@ Switchery.prototype.colorize = function() {
   this.switcher.style.backgroundColor = this.options.color;
   this.switcher.style.borderColor = this.options.color;
   this.switcher.style.boxShadow = 'inset 0 0 0 16px ' + this.options.color;
+};
+
+/**
+ * Handle the onchange event.
+ *
+ * @param {Boolean} state
+ * @api private
+ */
+
+Switchery.prototype.handleOnchange = function(state) {
+  if (this.element.checked != state) {
+    if ("createEvent" in document) {
+      var event = document.createEvent("HTMLEvents");
+      event.initEvent("change", false, true);
+      this.element.dispatchEvent(event);
+    } else {
+      this.element.fireEvent("onchange");
+    }
+  }
 };
 
 /**
