@@ -148,8 +148,6 @@ Switchery.prototype.setPosition = function (clicked) {
   if (clicked && checked) checked = false;
   else if (clicked && !checked) checked = true;
 
-  this.handleOnchange(checked);
-
   if (checked === true) {
     this.element.checked = true;
 
@@ -229,14 +227,12 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  if (this.element.checked != state) {
-    if ("createEvent" in document) {
-      var event = document.createEvent("HTMLEvents");
-      event.initEvent("change", false, true);
-      this.element.dispatchEvent(event);
-    } else {
-      this.element.fireEvent("onchange");
-    }
+  if ("createEvent" in document) {
+    var event = document.createEvent("HTMLEvents");
+    event.initEvent("change", false, true);
+    this.element.dispatchEvent(event);
+  } else {
+    this.element.fireEvent("onchange");
   }
 };
 
@@ -254,10 +250,12 @@ Switchery.prototype.handleClick = function() {
     if (switcher.addEventListener) {
       switcher.addEventListener('click', function() {
         $this.setPosition(true);
+        $this.handleOnchange($this.element.checked);
       });
     } else {
       switcher.attachEvent('onclick', function() {
         $this.setPosition(true);
+        $this.handleOnchange($this.element.checked);
       });
     }
   } else {
