@@ -38,7 +38,7 @@ var elem = document.querySelector('.js-switch');
 var init = new Switchery(elem);
 ```
 
-Use the above for the standalone version. For development you need `var Switchery = require('switchery');` at the very beginning.
+Use the above for the standalone version.
 
 ## Settings and Defaults
 
@@ -127,6 +127,32 @@ for (var i = 0; i < elems.length; i++) {
   var switchery = new Switchery(elems[i]);
 }
 ```
+
+## Development
+
+If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.
+
+After you clone the repository, do this in your terminal ([NPM](http://npmjs.org/) required):
+
+```shell
+$ npm install
+```
+
+Add the following code before the rest:
+
+```js
+var Switchery = require('switchery');
+```
+
+Make sure you're using the `build/build.js` file and you're ready.
+
+There are some useful commands you can use.
+
+`$ make install` - will install Node.js modules, components etc.
+
+`$ make build` - will create a build file
+
+`$ make standalone` - will create a standalone and minified files
 
 ## Credits
 
