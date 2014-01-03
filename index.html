@@ -93,13 +93,7 @@
           </div>
         </pre>
 
-        <p>Use the above for the standalone version. For development you need to add the following line first:</p>
-
-        <pre>
-          <div class="script">
-            <div><span class="specials">var</span> Switchery = require('<span class="value">switchery</span>');</div>
-          </div>
-        </pre>
+        <p>Use the above for the standalone version.</p>
       </section>
 
       <section class="section">
@@ -250,6 +244,53 @@
 
           <p><input type="checkbox" class="js-switch" checked /></p>
         </div>
+      </section>
+
+      <section class="section">
+        <h3>Development</h3>
+
+        <p>If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.</p>
+
+        <p>After you clone the repository, do this in your terminal (<a href="http://npmjs.org/" target="_blank">NPM</a> required):</p>
+
+        <pre>
+          <div class="tag">
+            $ npm install
+          </div>
+        </pre>
+
+        <p>Add the following code before the rest:</p>
+
+        <pre>
+          <div class="script">
+            <div><span class="specials">var</span> Switchery = require('<span class="value">switchery</span>');</div>
+          </div>
+        </pre>
+
+        <p>Make sure you're using the build/build.js and build/build.css files and you're ready.</p>
+
+        <p>There are some useful commands you can use.</p>
+
+        <pre>
+          <div class="tag">
+            $ make install
+          </div>
+        </pre>
+        Will install Node.js modules, components etc.
+
+        <pre>
+          <div class="tag">
+            $ make build
+          </div>
+        </pre>
+        Will create a build file.
+
+        <pre>
+          <div class="tag">
+            $ make standalone
+          </div>
+        </pre>
+        Will create a standalone and minified files.
       </section>
     </div>
 
