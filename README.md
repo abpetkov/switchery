@@ -144,7 +144,7 @@ Add the following code before the rest:
 var Switchery = require('switchery');
 ```
 
-Make sure you're using the `build/build.js` file and you're ready.
+Make sure you're using the `build/build.js` and `build/build.css` files and you're ready.
 
 There are some useful commands you can use.
 
