@@ -227,9 +227,11 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  if ("createEvent" in document) {
-    var event = document.createEvent("HTMLEvents");
-    event.initEvent("change", false, true);
+  var eve = new Event("click");
+  this.element.dispatchEvent(eve);
+
+  if (typeof Event === "function") {
+    var event = new Event("change", {cancelable: true});
     this.element.dispatchEvent(event);
   } else {
     this.element.fireEvent("onchange");
