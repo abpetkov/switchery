@@ -269,7 +269,7 @@ Transitionize.prototype.init = function() {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.3.5
+ * Switchery 0.3.6
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -496,12 +496,14 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  if ("createEvent" in document) {
-    var event = document.createEvent("HTMLEvents");
-    event.initEvent("change", false, true);
+  var evt = new Event('click');
+  this.element.dispatchEvent(evt);
+
+  if (typeof Event === 'function') {
+    var event = new Event('change', { cancelable: true });
     this.element.dispatchEvent(event);
   } else {
-    this.element.fireEvent("onchange");
+    this.element.fireEvent('onchange');
   }
 };
 
