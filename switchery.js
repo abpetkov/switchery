@@ -227,14 +227,14 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  var eve = new Event("click");
-  this.element.dispatchEvent(eve);
+  var evt = new Event('click');
+  this.element.dispatchEvent(evt);
 
-  if (typeof Event === "function") {
-    var event = new Event("change", {cancelable: true});
+  if (typeof Event === 'function') {
+    var event = new Event('change', { cancelable: true });
     this.element.dispatchEvent(event);
   } else {
-    this.element.fireEvent("onchange");
+    this.element.fireEvent('onchange');
   }
 };
 
