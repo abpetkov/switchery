@@ -1,4 +1,14 @@
 
+0.3.6 / 2014-01-04
+==================
+
+  * Generate new standalone file
+  * Refactor code
+  * Use event constructors to create onchange and click events
+  * Updated standalone to dist in bower.json
+  * Required files
+  * Add development info
+
 0.3.5 / 2013-12-31
 ==================
 
