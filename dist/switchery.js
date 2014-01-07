@@ -514,19 +514,19 @@ Switchery.prototype.handleOnchange = function(state) {
  */
 
 Switchery.prototype.handleClick = function() {
-  var $this = this
+  var self = this
     , switcher = this.switcher;
 
   if (this.isDisabled() === false) {
     if (switcher.addEventListener) {
       switcher.addEventListener('click', function() {
-        $this.setPosition(true);
-        $this.handleOnchange($this.element.checked);
+        self.setPosition(true);
+        self.handleOnchange(self.element.checked);
       });
     } else {
       switcher.attachEvent('onclick', function() {
-        $this.setPosition(true);
-        $this.handleOnchange($this.element.checked);
+        self.setPosition(true);
+        self.handleOnchange(self.element.checked);
       });
     }
   } else {
