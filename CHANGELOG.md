@@ -1,4 +1,9 @@
 
+0.4.0 / 2014-01-15
+==================
+
+ * Use ftlabs/fastclick for mobile browser optimization
+
 0.3.6 / 2014-01-04
 ==================
 
