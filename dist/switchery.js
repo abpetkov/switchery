@@ -1077,7 +1077,7 @@ require.register("switchery/switchery.js", function(exports, require, module){
  */
 
 var transitionize = require('transitionize')
-    fastclick = require('fastclick');
+  , fastclick = require('fastclick');
 
 /**
  * Expose `Switchery`.
