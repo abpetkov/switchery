@@ -17,7 +17,7 @@
  */
 
 var transitionize = require('transitionize')
-    fastclick = require('fastclick');
+  , fastclick = require('fastclick');
 
 /**
  * Expose `Switchery`.
