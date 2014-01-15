@@ -25,7 +25,8 @@
     ".*"
   ],
   "dependencies": {
-    "transitionize": "*"
+    "transitionize": "*",
+    "fastclick": "v0.6.11"
   },
   "devDependencies": {}
 }

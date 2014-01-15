@@ -18,7 +18,8 @@
     "switchery.css"
   ],
   "dependencies": {
-    "abpetkov/transitionize": "*"
+    "abpetkov/transitionize": "*",
+    "ftlabs/fastclick": "v0.6.11"
   },
   "development": {}
 }

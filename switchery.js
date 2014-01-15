@@ -16,7 +16,8 @@
  * External dependencies.
  */
 
-var transitionize = require('transitionize');
+var transitionize = require('transitionize')
+    fastclick = require('fastclick');
 
 /**
  * Expose `Switchery`.
@@ -249,6 +250,8 @@ Switchery.prototype.handleClick = function() {
     , switcher = this.switcher;
 
   if (this.isDisabled() === false) {
+    fastclick(switcher);
+
     if (switcher.addEventListener) {
       switcher.addEventListener('click', function() {
         self.setPosition(true);
