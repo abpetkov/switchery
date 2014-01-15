@@ -203,7 +203,7 @@ require.relative = function(parent) {
 require.register("abpetkov-transitionize/transitionize.js", function(exports, require, module){
 
 /**
- * Transitionize 0.0.1
+ * Transitionize 0.0.3
  * https://github.com/abpetkov/transitionize
  *
  * Authored by Alexander Petkov
@@ -1060,7 +1060,7 @@ if (typeof define !== 'undefined' && define.amd) {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.3.6
+ * Switchery 0.4.0
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
