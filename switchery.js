@@ -1,6 +1,6 @@
 
 /**
- * Switchery 0.4.0
+ * Switchery 0.4.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
