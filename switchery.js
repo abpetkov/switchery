@@ -228,10 +228,17 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  var evt = new Event('click');
-  this.element.dispatchEvent(evt);
+  var evt = null;
 
-  if (typeof Event === 'function') {
+  if (document.createEvent) {
+    evt = new Event('click');
+    this.element.dispatchEvent(evt);
+  } else {
+    evt = document.createEventObject();
+    this.element.fireEvent('onclick', evt);
+  }
+
+  if (typeof Event === 'function' || !document.fireEvent) {
     var event = new Event('change', { cancelable: true });
     this.element.dispatchEvent(event);
   } else {
