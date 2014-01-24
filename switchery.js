@@ -282,7 +282,7 @@ Switchery.prototype.handleClick = function() {
  * @api private
  */
 
-Switchery.prototype.disableLabel = function(e) {
+Switchery.prototype.disableLabel = function() {
   var parent = this.element.parentNode
     , labels = document.getElementsByTagName('label')
     , attached = null;
