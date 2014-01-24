@@ -60,7 +60,7 @@ function Switchery(element, options) {
     }
   }
 
-  if (this.element.type == 'checkbox') this.init();
+  if (this.element != null && this.element.type == 'checkbox') this.init();
 }
 
 /**
@@ -275,6 +275,19 @@ Switchery.prototype.handleClick = function() {
     this.switcher.style.opacity = this.options.disabledOpacity;
   }
 };
+/*
+ * Disable attached labels default behaviour.
+ *
+ * @api private
+ */
+
+Switchery.prototype.disableLabel = function() {
+  if (this.element.parentNode.tagName.toLowerCase() === 'label') {
+    this.element.parentNode.addEventListener('click', function(e) {
+      e.preventDefault();
+    });
+  }
+};
 
 /**
  * Initialize Switchery.
@@ -287,5 +300,6 @@ Switchery.prototype.init = function() {
   this.show();
   this.setPosition();
   this.setAttributes();
+  this.disableLabel();
   this.handleClick();
 };
