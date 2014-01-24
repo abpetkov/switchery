@@ -1,4 +1,11 @@
 
+0.4.2 / 2014-01-24
+==================
+
+ * Resolve property method issues in IE
+ * Disable label checkbox change event
+ * Check if element is null
+
 0.4.1 / 2014-01-18
 ==================
 
