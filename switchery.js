@@ -275,17 +275,34 @@ Switchery.prototype.handleClick = function() {
     this.switcher.style.opacity = this.options.disabledOpacity;
   }
 };
+
 /*
  * Disable attached labels default behaviour.
  *
  * @api private
  */
 
-Switchery.prototype.disableLabel = function() {
-  if (this.element.parentNode.tagName.toLowerCase() === 'label') {
-    this.element.parentNode.addEventListener('click', function(e) {
-      e.preventDefault();
-    });
+Switchery.prototype.disableLabel = function(e) {
+  var parent = this.element.parentNode
+    , labels = document.getElementsByTagName('label')
+    , attached = null;
+
+  for (var i = 0; i < labels.length; i ++) {
+    if (labels[i].getAttribute('for') === this.element.id) {
+      attached = true;
+    }
+  }
+
+  if (attached === true || parent.tagName.toLowerCase() === 'label') {
+    if (parent.addEventListener) {
+      parent.addEventListener('click', function(e) {
+        e.preventDefault();
+      });
+    } else {
+      parent.attachEvent('onclick', function(e) {
+        e.returnValue = false;
+      });
+    }
   }
 };
 
