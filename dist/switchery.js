@@ -1060,7 +1060,7 @@ if (typeof define !== 'undefined' && define.amd) {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.4.1
+ * Switchery 0.4.2
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1120,7 +1120,7 @@ function Switchery(element, options) {
     }
   }
 
-  if (this.element.type == 'checkbox') this.init();
+  if (this.element != null && this.element.type == 'checkbox') this.init();
 }
 
 /**
@@ -1288,18 +1288,9 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  var evt = null;
-
-  if (document.createEvent) {
-    evt = new Event('click');
-    this.element.dispatchEvent(evt);
-  } else {
-    evt = document.createEventObject();
-    this.element.fireEvent('onclick', evt);
-  }
-
   if (typeof Event === 'function' || !document.fireEvent) {
-    var event = new Event('change', { cancelable: true });
+    var event = document.createEvent('HTMLEvents');
+    event.initEvent('change', false, true);
     this.element.dispatchEvent(event);
   } else {
     this.element.fireEvent('onchange');
@@ -1336,6 +1327,36 @@ Switchery.prototype.handleClick = function() {
   }
 };
 
+/*
+ * Disable attached labels default behaviour.
+ *
+ * @api private
+ */
+
+Switchery.prototype.disableLabel = function() {
+  var parent = this.element.parentNode
+    , labels = document.getElementsByTagName('label')
+    , attached = null;
+
+  for (var i = 0; i < labels.length; i ++) {
+    if (labels[i].getAttribute('for') === this.element.id) {
+      attached = true;
+    }
+  }
+
+  if (attached === true || parent.tagName.toLowerCase() === 'label') {
+    if (parent.addEventListener) {
+      parent.addEventListener('click', function(e) {
+        e.preventDefault();
+      });
+    } else {
+      parent.attachEvent('onclick', function(e) {
+        e.returnValue = false;
+      });
+    }
+  }
+};
+
 /**
  * Initialize Switchery.
  *
@@ -1347,6 +1368,7 @@ Switchery.prototype.init = function() {
   this.show();
   this.setPosition();
   this.setAttributes();
+  this.disableLabel();
   this.handleClick();
 };
 
