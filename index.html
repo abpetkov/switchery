@@ -14,6 +14,7 @@
 
     <!--[if lt IE 9]>
       <script src="html5.js"></script>
+      <script src="PIE.js"></script>
     <![endif]-->
 
     <script type="text/javascript">
@@ -235,7 +236,7 @@
         <div class="example">
           <h4>Legacy browsers</h4>
 
-          <p>If you are an adventurer and like to use legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.</p>
+          <p>If you are an adventurer and like to support legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach. Personally I recommend using <a href="http://css3pie.com/" target="_blank">CSS3 PIE</a>. For working example you can check out the demo page.</p>
 
           <pre>
             <div class="script">
@@ -356,6 +357,19 @@
 
       var secondary = document.querySelector('.js-switch-secondary');
       var switchery = new Switchery(secondary, { color: '#fec200', secondaryColor: '#ff8787' });
+
+      // CSS3 Pie for <IE9
+      if (window.PIE) {
+        var wrapper = document.querySelectorAll('.switchery')
+          , handle = document.querySelectorAll('.switchery > small');
+
+        if (wrapper.length == handle.length) {
+          for (var i = 0; i < wrapper.length; i++) {
+            PIE.attach(wrapper[i]);
+            PIE.attach(handle[i]);
+          }
+        }
+      }
     </script>
   </body>
 </html>
