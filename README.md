@@ -122,7 +122,7 @@ Any other changes regarding colors you want to make, should take place in `switc
 
 ##### Legacy browsers
 
-If you are an adventurer and like to use legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.
+If you are an adventurer and like to support legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.
 
 ```js
 var elems = document.querySelectorAll('.js-switch');
@@ -131,6 +131,8 @@ for (var i = 0; i < elems.length; i++) {
   var switchery = new Switchery(elems[i]);
 }
 ```
+
+Personally I recommend using [CSS3 PIE](http://css3pie.com/). For working example you can check out the demo page.
 
 ## Development
 
