@@ -120,6 +120,31 @@ var switchery = new Switchery(elem, { secondaryColor: '#bbf0f0' });
 
 Any other changes regarding colors you want to make, should take place in `switchery.css`.
 
+##### Checking state
+
+In many cases, you'll need to have the current state of the checkbox, checked or not. I'll demostrate how to do this in the two most common situations - getting the state on click and on change.
+
+On click:
+
+```js
+var clickCheckbox = document.querySelector('.js-check-click')
+  , clickButton = document.querySelector('.js-check-click-button');
+
+clickButton.addEventListener('click', function() {
+  alert(clickCheckbox.checked);
+});
+```
+
+On change:
+
+```js
+var changeCheckbox = document.querySelector('.js-check-change');
+
+changeCheckbox.onchange = function() {
+  alert(changeCheckbox.checked);
+};
+```
+
 ##### Legacy browsers
 
 If you are an adventurer and like to support legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.
