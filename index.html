@@ -14,6 +14,7 @@
 
     <!--[if lt IE 9]>
       <script src="html5.js"></script>
+      <script src="PIE.js"></script>
     <![endif]-->
 
     <script type="text/javascript">
@@ -106,14 +107,14 @@
 
         <pre>
           <div class="script">
-<div>defaults <span class="single">=</span> <span class="specials">{</span></div>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
-  <div>&nbsp;&nbsp;, secondaryColor&nbsp;: <span class="quote">'</span><span class="value">#dfdfdf</span><span class="quote">'</span></div>
-  <div>&nbsp;&nbsp;, className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
-  <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
-  <div>&nbsp;&nbsp;, disabledOpacity: 0.5</div>
-  <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
-<div class="specials">}</div>
+            <div>defaults <span class="single">=</span> <span class="specials">{</span></div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, secondaryColor&nbsp;: <span class="quote">'</span><span class="value">#dfdfdf</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
+              <div>&nbsp;&nbsp;, disabledOpacity: 0.5</div>
+              <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
+            <div class="specials">}</div>
           </div>
         </pre>
 
@@ -279,7 +280,7 @@
         <div class="example">
           <h4>Legacy browsers</h4>
 
-          <p>If you are an adventurer and like to use legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.</p>
+          <p>If you are an adventurer and like to support legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.</p>
 
           <pre>
             <div class="script">
@@ -290,6 +291,8 @@
               <div>}</div>
             </div>
           </pre>
+
+          <p>Personally I recommend using <a href="http://css3pie.com/" target="_blank">CSS3 PIE</a>. It's used on all switches on this demo page.</p>
 
           <p><input type="checkbox" class="js-switch" checked /></p>
         </div>
@@ -421,6 +424,19 @@
       changeCheckbox.onchange = function() {
         changeField.innerHTML = changeCheckbox.checked;
       };
+
+      // CSS3 Pie for <IE9
+      if (window.PIE) {
+        var wrapper = document.querySelectorAll('.switchery')
+          , handle = document.querySelectorAll('.switchery > small');
+
+        if (wrapper.length == handle.length) {
+          for (var i = 0; i < wrapper.length; i++) {
+            PIE.attach(wrapper[i]);
+            PIE.attach(handle[i]);
+          }
+        }
+      }
     </script>
   </body>
 </html>
