@@ -233,6 +233,50 @@
         </div>
 
         <div class="example">
+          <h4>Checking state</h4>
+
+          <p>In many cases, you'll need to have the current state of the checkbox, checked or not. I'll demostrate how to do this in the two most common situations - getting the state on click and on change.</p>
+
+          <p>On click:</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> clickCheckbox = <span class="single">document</span>.querySelector('<span class="value">.js-check-click</span>')</div>
+              <div>&nbsp;&nbsp;, clickButton = <span class="single">document</span>.querySelector('<span class="value">.js-check-click-button</span>');</div>
+              <br />
+              <div>clickButton.addEventListener('<span class="value">click</span>', <span class="specials">function</span>() <span class="specials">{</span></div>
+                <div>&nbsp;&nbsp;<span class="specials">alert</span>(clickCheckbox.checked);</div>
+              <div><span class="specials">}</span>);</div>
+            </div>
+          </pre>
+
+          <div class="check-state">
+            <p>Result:</p>
+            <input type="checkbox" class="js-switch js-check-click" checked />
+            <button class="button js-check-click-button">Check state</button>
+          </div>
+
+          <p>On change:</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> changeCheckbox = <span class="single">document</span>.querySelector('<span class="value">.js-check-change</span>')</div>
+              <div>&nbsp;&nbsp;, changeField = <span class="single">document</span>.querySelector('<span class="value">.js-check-change-field</span>');</div>
+              <br />
+              <div><span class="single">changeCheckbox</span>.<span class="boolean">onchange</span> = <span class="specials">function</span>() <span class="specials">{</span></div>
+                <div>&nbsp;&nbsp;changeField.innerHTML = changeCheckbox.checked;</div>
+              <div><span class="specials">}</span>;</div>
+            </div>
+          </pre>
+
+          <div class="check-state">
+            <p>Result:</p>
+            <input type="checkbox" class="js-switch js-check-change" checked />
+            <div class="check-change js-check-change-field">&laquo; click</div>
+          </div>
+        </div>
+
+        <div class="example">
           <h4>Legacy browsers</h4>
 
           <p>If you are an adventurer and like to use legacy browsers, like IE8 and IE7, apply your favourite fix for rounded corners and box shadows and try a slightly different approach.</p>
@@ -356,6 +400,27 @@
 
       var secondary = document.querySelector('.js-switch-secondary');
       var switchery = new Switchery(secondary, { color: '#fec200', secondaryColor: '#ff8787' });
+
+      // Getting checkbox state
+      var clickCheckbox = document.querySelector('.js-check-click')
+        , clickButton = document.querySelector('.js-check-click-button');
+
+      if (window.addEventListener) {
+        clickButton.addEventListener('click', function() {
+          alert(clickCheckbox.checked);
+        });
+      } else {
+        clickButton.attachEvent('onclick', function() {
+          alert(clickCheckbox.checked);
+        });
+      }
+
+      var changeCheckbox = document.querySelector('.js-check-change')
+        , changeField = document.querySelector('.js-check-change-field');
+
+      changeCheckbox.onchange = function() {
+        changeField.innerHTML = changeCheckbox.checked;
+      };
     </script>
   </body>
 </html>

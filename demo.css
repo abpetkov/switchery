@@ -396,7 +396,9 @@ keyframes fade-load {
 
 .button {
   background-color: #635eb0;
+  border: 0;
   color: #fff;
+  cursor: pointer;
   display: inline-block;
   line-height: 1.75em;
   padding: 15px 30px;
@@ -514,8 +516,7 @@ pre {
 }
 
 .check-state {
-  display: inline;
-  margin-right: 50px;
+  margin: 0 50px 20px 0;
 }
 
 .check-state:last-child {
@@ -524,6 +525,19 @@ pre {
 
 .check-state > .button {
   margin-left: 10px;
+  padding: 4px 15px;
+}
+
+.check-state > .check-change {
+  background-color: #fdf6e3;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+  color: #635eb0;
+  display: inline-block;
+  height: 22px;
+  text-align: center;
+  padding-top: 4px;
+  vertical-align: middle;
+  width: 52px;
 }
 
 /**
