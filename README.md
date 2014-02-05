@@ -104,7 +104,7 @@ var switchery = new Switchery(elem, { disabled: true, disabledOpacity: 0.75 });
 
 ##### Colored
 
-You can change the primary of the switch to fit your design perfectly:
+You can change the primary color of the switch to fit your design perfectly:
 
 ```js
 var switchery = new Switchery(elem, { color: '#41b7f1' });
