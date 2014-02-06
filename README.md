@@ -64,6 +64,10 @@ defaults = {
 - `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
 - `speed` : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)
 
+## Multiple calls
+
+You can filter out existing elements that have already been called by looking for data-switchery="true"
+
 ## Examples
 
 ##### Checked

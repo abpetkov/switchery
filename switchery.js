@@ -60,7 +60,7 @@ function Switchery(element, options) {
     }
   }
 
-  if (this.element != null && this.element.type == 'checkbox' && !this.markedAsSwitched()) this.init();
+  if (this.element != null && this.element.type == 'checkbox') this.init();
 }
 
 /**
