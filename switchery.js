@@ -297,6 +297,26 @@ Switchery.prototype.disableLabel = function() {
   }
 };
 
+/*
+ * Mark an individual switch as already handled
+ *
+ * @api private
+ */
+
+Switchery.prototype.markAsSwitched = function(){
+  this.element.setAttribute("data-switchery", true)
+}
+
+/*
+ * Check if an individual switch is already handled
+ *
+ * @api private
+ */
+
+Switchery.prototype.markedAsSwitched = function(){
+  return this.element.getAttribute("data-switchery")
+}
+
 /**
  * Initialize Switchery.
  *
@@ -304,6 +324,7 @@ Switchery.prototype.disableLabel = function() {
  */
 
 Switchery.prototype.init = function() {
+  this.markAsSwitched();
   this.hide();
   this.show();
   this.setPosition();
