@@ -1,4 +1,10 @@
 
+0.5.0 / 2014-02-07
+==================
+
+ * Removes the internal validation for loaded switches and lets people do it on their own
+ * Sets a data attribute to handle multiple calls for a checkbox
+
 0.4.2 / 2014-01-24
 ==================
 

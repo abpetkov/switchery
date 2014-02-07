@@ -1060,13 +1060,13 @@ if (typeof define !== 'undefined' && define.amd) {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.4.2
+ * Switchery 0.5.0
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
  * https://github.com/abpetkov
  *
- * Copyright 2013, Alexander Petkov
+ * Copyright 2013-2014, Alexander Petkov
  * License: The MIT License (MIT)
  * http://opensource.org/licenses/MIT
  *
@@ -1358,6 +1358,26 @@ Switchery.prototype.disableLabel = function() {
 };
 
 /**
+ * Mark an individual switch as already handled.
+ *
+ * @api private
+ */
+
+Switchery.prototype.markAsSwitched = function() {
+  this.element.setAttribute('data-switchery', true);
+}
+
+/**
+ * Check if an individual switch is already handled.
+ *
+ * @api private
+ */
+
+Switchery.prototype.markedAsSwitched = function() {
+  return this.element.getAttribute('data-switchery');
+}
+
+/**
  * Initialize Switchery.
  *
  * @api private
@@ -1368,6 +1388,7 @@ Switchery.prototype.init = function() {
   this.show();
   this.setPosition();
   this.setAttributes();
+  this.markAsSwitched();
   this.disableLabel();
   this.handleClick();
 };
