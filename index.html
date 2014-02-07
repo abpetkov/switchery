@@ -172,6 +172,19 @@
         </div>
 
         <div class="example">
+          <h4>Multiple calls</h4>
+
+          <p>You can filter out existing elements that have already been called by looking for <strong>data-switchery="true"</strong>. The following code will return if there's an element with this data attribute already.</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> init = <span class="single">new</span> Switchery('<span class="value">.js-switch</span>');</div>
+              <div><span class="single">if</span> (init.markedAsSwitched()) <span class="specials">{</span> ... <span class="specials">}</span></div>
+            </div>
+          </pre>
+        </div>
+
+        <div class="example">
           <h4>Disabled</h4>
 
           <p>Use the <strong>disabled</strong> option to make your switch active or inactive.</p>
