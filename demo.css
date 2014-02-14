@@ -417,6 +417,10 @@ keyframes fade-load {
   text-decoration: none;
 }
 
+.button:focus {
+  outline: 0;
+}
+
 .button:active {
   background-color: #5550a8;
 }
