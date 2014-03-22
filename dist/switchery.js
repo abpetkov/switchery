@@ -1060,7 +1060,7 @@ if (typeof define !== 'undefined' && define.amd) {
 require.register("switchery/switchery.js", function(exports, require, module){
 
 /**
- * Switchery 0.5.0
+ * Switchery 0.5.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1212,8 +1212,8 @@ Switchery.prototype.setPosition = function (clicked) {
   if (checked === true) {
     this.element.checked = true;
 
-    if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - jack.offsetWidth + 'px';
-    else jack.style.left = parseInt(switcher.currentStyle['width']) - jack.offsetWidth + 'px';
+    if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - parseInt(window.getComputedStyle(jack).width) + 'px';
+    else jack.style.left = parseInt(switcher.currentStyle['width']) - parseInt(jack.currentStyle['width']) + 'px';
 
     if (this.options.color) this.colorize();
     this.setSpeed();
