@@ -1,4 +1,3 @@
-
 /**
  * Switchery 0.5.1
  * http://abpetkov.github.io/switchery/
@@ -230,7 +229,7 @@ Switchery.prototype.colorize = function() {
 Switchery.prototype.handleOnchange = function(state) {
   if (typeof Event === 'function' || !document.fireEvent) {
     var event = document.createEvent('HTMLEvents');
-    event.initEvent('change', false, true);
+    event.initEvent('change', true, true);
     this.element.dispatchEvent(event);
   } else {
     this.element.fireEvent('onchange');
