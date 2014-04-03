@@ -1058,9 +1058,8 @@ if (typeof define !== 'undefined' && define.amd) {
 
 });
 require.register("switchery/switchery.js", function(exports, require, module){
-
 /**
- * Switchery 0.5.1
+ * Switchery 0.5.2
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1290,7 +1289,7 @@ Switchery.prototype.colorize = function() {
 Switchery.prototype.handleOnchange = function(state) {
   if (typeof Event === 'function' || !document.fireEvent) {
     var event = document.createEvent('HTMLEvents');
-    event.initEvent('change', false, true);
+    event.initEvent('change', true, true);
     this.element.dispatchEvent(event);
   } else {
     this.element.fireEvent('onchange');
