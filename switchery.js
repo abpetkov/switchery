@@ -304,7 +304,7 @@ Switchery.prototype.disableLabel = function() {
 
 Switchery.prototype.markAsSwitched = function() {
   this.element.setAttribute('data-switchery', true);
-}
+};
 
 /**
  * Check if an individual switch is already handled.
@@ -314,7 +314,7 @@ Switchery.prototype.markAsSwitched = function() {
 
 Switchery.prototype.markedAsSwitched = function() {
   return this.element.getAttribute('data-switchery');
-}
+};
 
 /**
  * Initialize Switchery.
