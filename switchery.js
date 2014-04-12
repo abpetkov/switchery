@@ -237,6 +237,28 @@ Switchery.prototype.handleOnchange = function(state) {
 };
 
 /**
+ * Handle the native input element state change.
+ * A `change` event must be fired in order to detect the change.
+ *
+ * @api private
+ */
+
+Switchery.prototype.handleChange = function() {
+  var self = this
+    , el = this.element;
+
+  if (el.addEventListener) {
+    el.addEventListener('change', function() {
+      self.setPosition();
+    });
+  } else {
+    el.attachEvent('change', function() {
+      self.setPosition();
+    });
+  }
+};
+
+/**
  * Handle the switch click event.
  *
  * @api private
@@ -329,5 +351,6 @@ Switchery.prototype.init = function() {
   this.setAttributes();
   this.markAsSwitched();
   this.disableLabel();
+  this.handleChange();
   this.handleClick();
 };
