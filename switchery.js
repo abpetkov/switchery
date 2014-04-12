@@ -345,7 +345,7 @@ Switchery.prototype.markedAsSwitched = function() {
  */
 
 Switchery.prototype.init = function() {
-  // this.hide();
+  this.hide();
   this.show();
   this.setPosition();
   this.setAttributes();
