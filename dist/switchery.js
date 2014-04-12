@@ -1059,7 +1059,7 @@ if (typeof define !== 'undefined' && define.amd) {
 });
 require.register("switchery/switchery.js", function(exports, require, module){
 /**
- * Switchery 0.5.2
+ * Switchery 0.5.3
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1297,6 +1297,28 @@ Switchery.prototype.handleOnchange = function(state) {
 };
 
 /**
+ * Handle the native input element state change.
+ * A `change` event must be fired in order to detect the change.
+ *
+ * @api private
+ */
+
+Switchery.prototype.handleChange = function() {
+  var self = this
+    , el = this.element;
+
+  if (el.addEventListener) {
+    el.addEventListener('change', function() {
+      self.setPosition();
+    });
+  } else {
+    el.attachEvent('onchange', function() {
+      self.setPosition();
+    });
+  }
+};
+
+/**
  * Handle the switch click event.
  *
  * @api private
@@ -1364,7 +1386,7 @@ Switchery.prototype.disableLabel = function() {
 
 Switchery.prototype.markAsSwitched = function() {
   this.element.setAttribute('data-switchery', true);
-}
+};
 
 /**
  * Check if an individual switch is already handled.
@@ -1374,7 +1396,7 @@ Switchery.prototype.markAsSwitched = function() {
 
 Switchery.prototype.markedAsSwitched = function() {
   return this.element.getAttribute('data-switchery');
-}
+};
 
 /**
  * Initialize Switchery.
@@ -1383,12 +1405,13 @@ Switchery.prototype.markedAsSwitched = function() {
  */
 
 Switchery.prototype.init = function() {
-  this.hide();
+  // this.hide();
   this.show();
   this.setPosition();
   this.setAttributes();
   this.markAsSwitched();
   this.disableLabel();
+  this.handleChange();
   this.handleClick();
 };
 
