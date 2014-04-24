@@ -234,8 +234,8 @@ keyframes fade-load {
 
 .description {
   box-sizing: border-box;
-  position: relative;
   padding-right: 270px;
+  position: relative;
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -263,8 +263,8 @@ keyframes fade-load {
 }
 
 .section h3 {
-  position: absolute;
   left: 0;
+  position: absolute;
   top: 0;
   width: 100%;
 }
@@ -357,8 +357,8 @@ keyframes fade-load {
 .footer {
   color: #fff;
   margin: 0 auto;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   padding-bottom: 100px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   width: 1000px;
 }
 
@@ -538,8 +538,8 @@ pre {
   color: #635eb0;
   display: inline-block;
   height: 22px;
-  text-align: center;
   padding-top: 4px;
+  text-align: center;
   vertical-align: middle;
   width: 52px;
 }
