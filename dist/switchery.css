@@ -15,6 +15,10 @@
   position: relative;
   vertical-align: middle;
   width: 50px;
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .switchery > small {
