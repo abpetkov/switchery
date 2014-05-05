@@ -161,7 +161,7 @@ Switchery.prototype.setPosition = function (clicked) {
     this.element.checked = false;
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
-    this.switcher.style.backgroundColor = '';
+    this.switcher.style.backgroundColor = this.options.secondaryColor;
     this.setSpeed();
   }
 };
