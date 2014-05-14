@@ -1059,7 +1059,7 @@ if (typeof define !== 'undefined' && define.amd) {
 });
 require.register("switchery/switchery.js", function(exports, require, module){
 /**
- * Switchery 0.5.4
+ * Switchery 0.5.5
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
