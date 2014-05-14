@@ -1,4 +1,9 @@
 
+0.5.5 / 2014-05-14
+==================
+
+  * Set secondary color to be background color on switch off state
+
 0.5.4 / 2014-04-29
 ==================
 
