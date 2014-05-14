@@ -1,7 +1,7 @@
 {
   "name": "switchery",
   "main": "dist/switchery.js",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "homepage": "abpetkov.github.io/switchery",
   "authors": [
     "Alexander Petkov"
