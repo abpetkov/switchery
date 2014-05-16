@@ -1059,7 +1059,7 @@ if (typeof define !== 'undefined' && define.amd) {
 });
 require.register("switchery/switchery.js", function(exports, require, module){
 /**
- * Switchery 0.5.4
+ * Switchery 0.5.5
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1221,7 +1221,7 @@ Switchery.prototype.setPosition = function (clicked) {
     this.element.checked = false;
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
-    this.switcher.style.backgroundColor = '';
+    this.switcher.style.backgroundColor = (this.options.secondaryColor !== defaults.secondaryColor) ? this.options.secondaryColor : '#fff';
     this.setSpeed();
   }
 };
