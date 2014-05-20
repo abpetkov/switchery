@@ -58,7 +58,7 @@ defaults = {
 ```
 
 - `color` : color of the switch element (HEX or RGB value)
-- `secondaryColor` : secondary color for the box shadow and border, when the switch is off
+- `secondaryColor` : secondary color for background color and border, when the switch is off
 - `className` : class name for the switch element (by default styled in switchery.css)
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
 - `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
@@ -116,7 +116,7 @@ var switchery = new Switchery(elem, { color: '#41b7f1' });
 
 ![Colored](http://i.imgur.com/qO0Pzub.jpg)
 
-Or the secondary color, which will change the switch shadow and default border:
+Or the secondary color, which will change the switch background color and border color:
 
 ```js
 var switchery = new Switchery(elem, { secondaryColor: '#bbf0f0' });
