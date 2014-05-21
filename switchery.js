@@ -203,8 +203,8 @@ Switchery.prototype.setAttributes = function() {
   var id = this.element.getAttribute('id')
     , name = this.element.getAttribute('name');
 
-  if (id) this.switcher.setAttribute('id', id);
-  if (name) this.switcher.setAttribute('name', name);
+  if (id) this.switcher.setAttribute('id', id + 'Switchery');
+  if (name) this.switcher.setAttribute('name', name + 'Switchery');
 };
 
 /**
