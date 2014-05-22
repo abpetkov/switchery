@@ -1,4 +1,10 @@
 
+0.6.0 / 2014-05-22
+==================
+
+  * Corresponding label with `for` attribute of the native input, to change switch state as well
+  * Do not copy input's `id` and `name` attributes to switch
+
 0.5.5 / 2014-05-14
 ==================
 
