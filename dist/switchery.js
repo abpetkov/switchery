@@ -1254,20 +1254,6 @@ Switchery.prototype.setSpeed = function() {
 };
 
 /**
- * Copy the input name and id attributes.
- *
- * @api private
- */
-
-Switchery.prototype.setAttributes = function() {
-  var id = this.element.getAttribute('id')
-    , name = this.element.getAttribute('name');
-
-  if (id) this.switcher.setAttribute('id', id);
-  if (name) this.switcher.setAttribute('name', name);
-};
-
-/**
  * Set switch color.
  *
  * @api private
@@ -1348,36 +1334,6 @@ Switchery.prototype.handleClick = function() {
   }
 };
 
-/*
- * Disable attached labels default behaviour.
- *
- * @api private
- */
-
-Switchery.prototype.disableLabel = function() {
-  var parent = this.element.parentNode
-    , labels = document.getElementsByTagName('label')
-    , attached = null;
-
-  for (var i = 0; i < labels.length; i ++) {
-    if (labels[i].getAttribute('for') === this.element.id) {
-      attached = true;
-    }
-  }
-
-  if (attached === true || parent.tagName.toLowerCase() === 'label') {
-    if (parent.addEventListener) {
-      parent.addEventListener('click', function(e) {
-        e.preventDefault();
-      });
-    } else {
-      parent.attachEvent('onclick', function(e) {
-        e.returnValue = false;
-      });
-    }
-  }
-};
-
 /**
  * Mark an individual switch as already handled.
  *
@@ -1408,9 +1364,7 @@ Switchery.prototype.init = function() {
   this.hide();
   this.show();
   this.setPosition();
-  this.setAttributes();
   this.markAsSwitched();
-  this.disableLabel();
   this.handleChange();
   this.handleClick();
 };
