@@ -202,7 +202,7 @@ Switchery.prototype.setSpeed = function() {
 Switchery.prototype.colorize = function() {
   this.switcher.style.backgroundColor = this.options.color;
   this.switcher.style.borderColor = this.options.color;
-  this.switcher.style.boxShadow = 'inset 0 0 0 16px ' + this.options.color;
+  this.switcher.style.boxShadow = 'inset 0 0 0 ' + this.switcher.offsetHeight/2 + 'px ' + this.options.color;
 };
 
 /**
