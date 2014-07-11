@@ -252,19 +252,21 @@ Switchery.prototype.handleChange = function() {
 
 Switchery.prototype.handleClick = function() {
   var self = this
-    , switcher = this.switcher;
+    , switcher = this.switcher
+    , parent = self.element.parentNode.tagName.toLowerCase()
+    , labelParent = (parent === 'label') ? false : true;
 
   if (this.isDisabled() === false) {
     fastclick(switcher);
 
     if (switcher.addEventListener) {
       switcher.addEventListener('click', function() {
-        self.setPosition(true);
+        self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
       });
     } else {
       switcher.attachEvent('onclick', function() {
-        self.setPosition(true);
+        self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
       });
     }
