@@ -1059,7 +1059,7 @@ if (typeof define !== 'undefined' && define.amd) {
 });
 require.register("switchery/switchery.js", function(exports, require, module){
 /**
- * Switchery 0.6.0
+ * Switchery 0.6.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1312,19 +1312,21 @@ Switchery.prototype.handleChange = function() {
 
 Switchery.prototype.handleClick = function() {
   var self = this
-    , switcher = this.switcher;
+    , switcher = this.switcher
+    , parent = self.element.parentNode.tagName.toLowerCase()
+    , labelParent = (parent === 'label') ? false : true;
 
   if (this.isDisabled() === false) {
     fastclick(switcher);
 
     if (switcher.addEventListener) {
       switcher.addEventListener('click', function() {
-        self.setPosition(true);
+        self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
       });
     } else {
       switcher.attachEvent('onclick', function() {
-        self.setPosition(true);
+        self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
       });
     }
