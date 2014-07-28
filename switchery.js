@@ -100,12 +100,18 @@ Switchery.prototype.create = function() {
       this.checkedText.className = "checked-text";
       this.checkedText.innerHTML = this.options.checkedText;
       this.switcher.appendChild(this.checkedText);
+      if (! this.element.checked) {
+          this.checkedText.style.display = "none";
+      }
   }
   if (this.options.uncheckedText) {
       this.uncheckedText = document.createElement('span');
       this.uncheckedText.className = "unchecked-text";
       this.uncheckedText.innerHTML = this.options.uncheckedText;
       this.switcher.appendChild(this.uncheckedText);
+      if (this.element.checked) {
+          this.uncheckedText.style.display = "none";
+      }
   }
 
   return this.switcher;
