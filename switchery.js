@@ -95,6 +95,24 @@ Switchery.prototype.create = function() {
   this.jack = document.createElement('small');
   this.switcher.appendChild(this.jack);
   this.switcher.className = this.options.className;
+  if (this.options.checkedText) {
+      this.checkedText = document.createElement('span');
+      this.checkedText.className = "checked-text";
+      this.checkedText.innerHTML = this.options.checkedText;
+      this.switcher.appendChild(this.checkedText);
+      if (! this.element.checked) {
+          this.checkedText.style.display = "none";
+      }
+  }
+  if (this.options.uncheckedText) {
+      this.uncheckedText = document.createElement('span');
+      this.uncheckedText.className = "unchecked-text";
+      this.uncheckedText.innerHTML = this.options.uncheckedText;
+      this.switcher.appendChild(this.uncheckedText);
+      if (this.element.checked) {
+          this.uncheckedText.style.display = "none";
+      }
+  }
 
   return this.switcher;
 };
@@ -167,6 +185,29 @@ Switchery.prototype.setPosition = function (clicked) {
 };
 
 /**
+ * Sets the show/hide text, if they exist.
+ *
+ * @api private
+ */
+Switchery.prototype.showOrHideText = function() {
+    if (this.isChecked()) {
+        if (this.checkedText) {
+            this.checkedText.style.display = "inline";
+        }
+        if (this.uncheckedText) {
+            this.uncheckedText.style.display = "none";
+        }
+    } else {
+        if (this.checkedText) {
+            this.checkedText.style.display = "none";
+        }
+        if (this.uncheckedText) {
+            this.uncheckedText.style.display = "inline";
+        }
+    }
+};
+
+/**
  * Set speed.
  *
  * @api private
@@ -236,10 +277,12 @@ Switchery.prototype.handleChange = function() {
   if (el.addEventListener) {
     el.addEventListener('change', function() {
       self.setPosition();
+      self.showOrHideText();
     });
   } else {
     el.attachEvent('onchange', function() {
       self.setPosition();
+      self.showOrHideText();
     });
   }
 };

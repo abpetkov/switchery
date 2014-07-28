@@ -30,3 +30,18 @@
   top: 0;
   width: 30px;
 }
+
+.switchery > span.checked-text {
+    font-size: 11px;
+    float: left;
+    padding-left: 4px;
+    padding-top: 5px;
+}
+
+.switchery > span.unchecked-text {
+    font-size: 11px;
+    float: right;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
