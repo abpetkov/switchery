@@ -15,6 +15,12 @@
   position: relative;
   vertical-align: middle;
   width: 50px;
+  
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
