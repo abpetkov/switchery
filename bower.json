@@ -1,6 +1,9 @@
 {
   "name": "switchery",
-  "main": "dist/switchery.js",
+  "main": [
+    "dist/switchery.js",
+    "dist/switchery.css"
+  ],
   "version": "0.6.2",
   "homepage": "abpetkov.github.io/switchery",
   "authors": [
