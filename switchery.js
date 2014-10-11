@@ -33,6 +33,7 @@ module.exports = Switchery;
 var defaults = {
     color          : '#64bd63'
   , secondaryColor : '#dfdfdf'
+  , jackColor      : '#fff'
   , className      : 'switchery'
   , disabled       : false
   , disabledOpacity: 0.5
@@ -162,6 +163,7 @@ Switchery.prototype.setPosition = function (clicked) {
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
     this.switcher.style.backgroundColor = (this.options.secondaryColor !== defaults.secondaryColor) ? this.options.secondaryColor : '#fff';
+    this.jack.style.backgroundColor = this.options.jackColor;
     this.setSpeed();
   }
 };
@@ -203,6 +205,7 @@ Switchery.prototype.colorize = function() {
   this.switcher.style.backgroundColor = this.options.color;
   this.switcher.style.borderColor = this.options.color;
   this.switcher.style.boxShadow = 'inset 0 0 0 16px ' + this.options.color;
+  this.jack.style.backgroundColor = this.options.jackColor;
 };
 
 /**
