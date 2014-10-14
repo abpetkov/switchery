@@ -31,10 +31,6 @@ $ component install abpetkov/switchery
 $ bower install switchery
 ```
 
-##### Angular JS
-
-For thorough installation and usage instructions on how to use Switchery with Angular JS, check out this repo: [servergrove/NgSwitchery](https://github.com/servergrove/NgSwitchery)
-
 ## Usage
 
 ```js
