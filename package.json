@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "uglify-js": "~2.4.8",
-    "component": "~0.18.0",
+    "component": "^1.0.0",
     "uglifycss": "0.0.7"
   }
 }
