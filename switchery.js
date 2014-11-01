@@ -216,7 +216,7 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  if (typeof Event === 'function' || !document.fireEvent) {
+  if (document.dispatchEvent) {
     var event = document.createEvent('HTMLEvents');
     event.initEvent('change', true, true);
     this.element.dispatchEvent(event);
