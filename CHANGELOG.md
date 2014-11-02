@@ -1,4 +1,13 @@
 
+0.6.3 / 2014-11-02
+==================
+
+ * Update component version
+ * Added separate Jack color option
+ * Add the CSS file to bower.json
+ * Fix bug in Hongmi phone
+ * Fixing issue found in IE9+ with change event dispatch
+
 0.6.2 / 2014-08-22
 ==================
 
