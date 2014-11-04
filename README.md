@@ -50,6 +50,7 @@ Use the above for the standalone version.
 defaults = {
     color          : '#64bd63'
   , secondaryColor : '#dfdfdf'
+  , jackColor      : '#fff'
   , className      : 'switchery'
   , disabled       : false
   , disabledOpacity: 0.5
@@ -59,6 +60,7 @@ defaults = {
 
 - `color` : color of the switch element (HEX or RGB value)
 - `secondaryColor` : secondary color for background color and border, when the switch is off
+- `jackColor` : color of the jack/handle element
 - `className` : class name for the switch element (by default styled in switchery.css)
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
 - `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
@@ -120,6 +122,12 @@ Or the secondary color, which will change the switch background color and border
 
 ```js
 var switchery = new Switchery(elem, { secondaryColor: '#bbf0f0' });
+```
+
+Since version 0.6.3, you're even allowed to change the jack color from JS, as follows:
+
+```js
+var switchery = new Switchery(elem, { jackColor: '#fffc00' });
 ```
 
 Any other changes regarding colors you want to make, should take place in `switchery.css`.
