@@ -112,6 +112,7 @@
             <div>defaults <span class="single">=</span> <span class="specials">{</span></div>
               <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
               <div>&nbsp;&nbsp;, secondaryColor&nbsp;: <span class="quote">'</span><span class="value">#dfdfdf</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, jackColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#fff</span><span class="quote">'</span></div>
               <div>&nbsp;&nbsp;, className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
               <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
               <div>&nbsp;&nbsp;, disabledOpacity: 0.5</div>
@@ -123,6 +124,7 @@
         <ul class="section-list">
           <li><em>color</em> : <p>color of the switch element (HEX or RGB value)</p></li>
           <li><em>secondaryColor</em> : <p>secondary color for the background color and border, when the switch is off</p></li>
+          <li><em>jackColor</em> : <p>color of the jack/handle element</p></li>
           <li><em>className</em> : <p>class name for the switch element (by default styled in <span>switchery.css</span>)</p></li>
           <li><em>disabled</em> : <p>enable or disable click events and changing the state of the switch (boolean value)</p></li>
           <li><em>disabledOpacity</em> : <p>opacity of the switch when disabled is true (0 to 1)</p></li>
@@ -245,6 +247,19 @@
           <p>Result:</p>
           <p>
             <input type="checkbox" class="js-switch-secondary" checked />
+          </p>
+
+          <p>Since version 0.6.3, you're even allowed to change the jack color from JS, as follows:</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { jackColor: '<span class="value">#fffc00</span>' });</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch-jack-color" checked />
           </p>
         </div>
 
@@ -418,6 +433,10 @@
 
       var secondary = document.querySelector('.js-switch-secondary');
       var switchery = new Switchery(secondary, { color: '#fec200', secondaryColor: '#ff8787' });
+
+      // Colored jack
+      var jack = document.querySelector('.js-switch-jack-color');
+      var switchery = new Switchery(jack, { jackColor: '#fffc00' });
 
       // Getting checkbox state
       // On click
