@@ -130,6 +130,8 @@ Since version 0.6.3, you're even allowed to change the jack color from JS, as fo
 var switchery = new Switchery(elem, { jackColor: '#fffc00' });
 ```
 
+![JackColor](http://i.imgur.com/vQNXkhJ.png)
+
 Any other changes regarding colors you want to make, should take place in `switchery.css`.
 
 ##### Checking state
