@@ -1038,6 +1038,7 @@ var defaults = {
   , disabled       : false
   , disabledOpacity: 0.5
   , speed          : '0.4s'
+  , onChange 	   : function(){}
 };
 
 /**
@@ -1266,11 +1267,17 @@ Switchery.prototype.handleClick = function() {
       switcher.addEventListener('click', function() {
         self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
+        if (typeof self.options.onChange == 'function') {
+			self.options.onChange.apply(self, [self.element.checked, self.element]);
+		}
       });
     } else {
       switcher.attachEvent('onclick', function() {
         self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
+        if (typeof self.options.onChange == 'function') {
+			self.options.onChange.apply(self, [self.element.checked, self.element]);
+		}
       });
     }
   } else {
