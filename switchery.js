@@ -16,7 +16,8 @@
  */
 
 var transitionize = require('transitionize')
-  , fastclick = require('fastclick');
+  , fastclick = require('fastclick')
+  , classes = require('classes');
 
 /**
  * Expose `Switchery`.
@@ -38,6 +39,7 @@ var defaults = {
   , disabled       : false
   , disabledOpacity: 0.5
   , speed          : '0.4s'
+  , size           : 'default'
 };
 
 /**
@@ -196,15 +198,41 @@ Switchery.prototype.setSpeed = function() {
 };
 
 /**
+ * Set switch size.
+ *
+ * @api private
+ */
+
+Switchery.prototype.setSize = function() {
+  var small = 'switchery-small'
+    , normal = 'switchery-default'
+    , large = 'switchery-large';
+
+  switch (this.options.size) {
+    case 'small':
+      classes(this.switcher).add(small)
+      break;
+    case 'large':
+      classes(this.switcher).add(large)
+      break;
+    default:
+      classes(this.switcher).add(normal)
+      break;
+  }
+};
+
+/**
  * Set switch color.
  *
  * @api private
  */
 
 Switchery.prototype.colorize = function() {
+  var switcherHeight = this.switcher.offsetHeight / 2;
+
   this.switcher.style.backgroundColor = this.options.color;
   this.switcher.style.borderColor = this.options.color;
-  this.switcher.style.boxShadow = 'inset 0 0 0 16px ' + this.options.color;
+  this.switcher.style.boxShadow = 'inset 0 0 0 ' + switcherHeight + 'px ' + this.options.color;
   this.jack.style.backgroundColor = this.options.jackColor;
 };
 
@@ -263,7 +291,7 @@ Switchery.prototype.handleClick = function() {
     fastclick(switcher);
 
     if (switcher.addEventListener) {
-      switcher.addEventListener('click', function() {
+      switcher.addEventListener('click', function(e) {
         self.setPosition(labelParent);
         self.handleOnchange(self.element.checked);
       });
@@ -308,6 +336,7 @@ Switchery.prototype.markedAsSwitched = function() {
 Switchery.prototype.init = function() {
   this.hide();
   this.show();
+  this.setSize();
   this.setPosition();
   this.markAsSwitched();
   this.handleChange();

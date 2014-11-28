@@ -19,7 +19,8 @@
   ],
   "dependencies": {
     "abpetkov/transitionize": "*",
-    "ftlabs/fastclick": "v0.6.11"
+    "ftlabs/fastclick": "v0.6.11",
+    "component/classes": "1.2.1"
   },
   "development": {}
 }
