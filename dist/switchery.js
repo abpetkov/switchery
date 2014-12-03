@@ -1331,7 +1331,7 @@ Switchery.prototype.isChecked = function() {
  */
 
 Switchery.prototype.isDisabled = function() {
-  return this.options.disabled || this.element.disabled;
+  return this.options.disabled || this.element.disabled || this.element.readOnly;
 };
 
 /**
