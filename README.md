@@ -108,6 +108,8 @@ Customize the default opacity of the disabled switch, using the `disabledOpacity
 var switchery = new Switchery(elem, { disabled: true, disabledOpacity: 0.75 });
 ```
 
+Adding `disabled` or `readonly` attribute to the native input element will result in the switch being disabled as well.
+
 ##### Colored
 
 You can change the primary color of the switch to fit your design perfectly:
@@ -133,6 +135,20 @@ var switchery = new Switchery(elem, { jackColor: '#fffc00' });
 ![JackColor](http://i.imgur.com/vQNXkhJ.png)
 
 Any other changes regarding colors you want to make, should take place in `switchery.css`.
+
+##### Sizes
+
+Since version 0.7.0 you can change the sizes of the switch element via `size`. Giving it a value of `small` or `large` will result in adding `switchery-small` or `switchery-large` classes respectively, which will change the switch size.
+
+Not using this property will render the default sized switch element.
+
+```js
+var switchery = new Switchery(elem, { size: 'small' });
+// ... or
+var switchery = new Switchery(elem, { size: 'large' });
+```
+
+![SwitchSizes](http://i.imgur.com/TVlgvx7.png)
 
 ##### Checking state
 
