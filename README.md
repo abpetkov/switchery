@@ -55,6 +55,7 @@ defaults = {
   , disabled       : false
   , disabledOpacity: 0.5
   , speed          : '0.4s'
+  , size           : 'default'
 };
 ```
 
@@ -65,6 +66,7 @@ defaults = {
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
 - `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
 - `speed` : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)
+- `size` : size of the switch element (small or large)
 
 ## Examples
 
