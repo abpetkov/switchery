@@ -1,4 +1,10 @@
 
+0.7.0 / 2014-12-09
+==================
+
+ * Respect `readonly` attribute on checkbox input
+ * Large and small size switches
+
 0.6.3 / 2014-11-02
 ==================
 
