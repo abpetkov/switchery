@@ -1197,7 +1197,7 @@ ClassList.prototype.contains = function(name){
 
 require.register("switchery", function (exports, module) {
 /**
- * Switchery 0.6.3
+ * Switchery 0.7.0
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
