@@ -56,6 +56,8 @@ function Switchery(element, options) {
   this.element = element;
   this.options = options || {};
 
+  defaults['disabled'] = this.element.readOnly;
+
   for (var i in defaults) {
     if (this.options[i] == null) {
       this.options[i] = defaults[i];
