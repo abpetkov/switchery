@@ -2,7 +2,7 @@
   "name": "switchery",
   "repo": "abpetkov/switchery",
   "description": "Component to create iOS 7 styled switches from default input checkboxes",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "keywords": [
     "checkbox",
     "input",
