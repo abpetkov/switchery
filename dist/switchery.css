@@ -5,6 +5,8 @@
  *
  */
 
+/* Switchery defaults. */
+
 .switchery {
   background-color: #fff;
   border: 1px solid #dfdfdf;
@@ -33,6 +35,30 @@
   position: absolute;
   top: 0;
   width: 30px;
+}
+
+/* Switchery sizes. */
+
+.switchery-small {
+  border-radius: 20px;
+  height: 20px;
+  width: 33px;
+}
+
+.switchery-small > small {
+  height: 20px;
+  width: 20px;
+}
+
+.switchery-large {
+  border-radius: 40px;
+  height: 40px;
+  width: 66px;
+}
+
+.switchery-large > small {
+  height: 40px;
+  width: 40px;
 }
 
 
