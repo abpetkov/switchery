@@ -117,6 +117,7 @@
               <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
               <div>&nbsp;&nbsp;, disabledOpacity: 0.5</div>
               <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">default</span><span class="quote">'</span></div>
             <div class="specials">}</div>
           </div>
         </pre>
@@ -129,6 +130,7 @@
           <li><em>disabled</em> : <p>enable or disable click events and changing the state of the switch (boolean value)</p></li>
           <li><em>disabledOpacity</em> : <p>opacity of the switch when disabled is true (0 to 1)</p></li>
           <li><em>speed</em> : <p>length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)</p></li>
+          <li><em>size</em> : <p>size of the switch element (small or large)</p></li>
         </ul>
       </section>
 
@@ -260,6 +262,36 @@
           <p>Result:</p>
           <p>
             <input type="checkbox" class="js-switch-jack-color" checked />
+          </p>
+        </div>
+
+        <div class="example">
+          <h4>Sizes</h4>
+
+          <p>Since version 0.7.0 you can change the sizes of the switch element via <strong>size</strong>. Giving it a value of <strong>small</strong> or <strong>large</strong> will result in adding <strong>switchery-small</strong> or <strong>switchery-large</strong> classes respectively, which will change the switch size.</p>
+
+          <p>Not using this property will render the default sized switch element.</p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { size: '<span class="value">small</span>' });</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch-small" checked />
+          </p>
+
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { size: '<span class="value">large</span>' });</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <p>
+            <input type="checkbox" class="js-switch-large" checked />
           </p>
         </div>
 
@@ -437,6 +469,13 @@
       // Colored jack
       var jack = document.querySelector('.js-switch-jack-color');
       var switchery = new Switchery(jack, { jackColor: '#fffc00' });
+
+      // Switch sizes
+      var small = document.querySelector('.js-switch-small');
+      var switchery = new Switchery(small, { size: 'small' });
+
+      var large = document.querySelector('.js-switch-large');
+      var switchery = new Switchery(large, { size: 'large' });
 
       // Getting checkbox state
       // On click
