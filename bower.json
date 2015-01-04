@@ -5,9 +5,9 @@
     "dist/switchery.css"
   ],
   "version": "0.7.0",
-  "homepage": "abpetkov.github.io/switchery",
-  "authors": [
-    "Alexander Petkov"
+  "homepage": "http://abpetkov.github.io/switchery/",
+  "author": [
+    "Alexander Petkov <abpetkov@gmail.com> (https://github.com/abpetkov)"
   ],
   "description": "Component to create iOS 7 styled switches from default input checkboxes",
   "keywords": [
