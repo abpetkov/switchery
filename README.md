@@ -31,6 +31,16 @@ $ component install abpetkov/switchery
 $ bower install switchery
 ```
 
+##### Rails
+
+To use Switchery in your rails app, add this to your Gemfile:
+
+```rails
+gem 'switchery-rails'
+```
+
+Or go to [Switchery Rails gem page](https://rubygems.org/gems/switchery-rails) for more info, documentation and instructions.
+
 ##### Angular JS
 
 For thorough installation and usage instructions on how to use Switchery with Angular JS, check out this repo: [servergrove/NgSwitchery](https://github.com/servergrove/NgSwitchery)
