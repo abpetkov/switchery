@@ -1,14 +1,14 @@
 // package metadata file for Meteor.js
 'use strict';
 
-var packageName = 'mediatainment:switchery'; // https://atmospherejs.com/mediatainment/switchery
+var packageName = 'abpetkov:switchery'; // https://atmospherejs.com/mediatainment/switchery
 var where = 'client'; // where to install: 'client' or 'server'. For both, pass nothing.
 
 Package.describe({
     name: packageName,
     summary: 'Switchery (official) - turns your default HTML checkbox inputs into beautiful iOS 7 style switches in just few simple steps. Easy customizable to fit your design perfectly.',
     version: "0.0.1", //packageJson.version,
-    git: 'https://github.com/mediatainment/switchery'
+    git: 'https://github.com/abpetkov/switchery'
 });
 
 Package.onUse(function(api) {
