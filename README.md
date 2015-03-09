@@ -45,6 +45,16 @@ Or go to [Switchery Rails gem page](https://rubygems.org/gems/switchery-rails) f
 
 For thorough installation and usage instructions on how to use Switchery with Angular JS, check out this repo: [servergrove/NgSwitchery](https://github.com/servergrove/NgSwitchery)
 
+##### Meteor
+
+You can install Switchery to your Meteor.js app via:
+
+```shell
+$ meteor add abpetkov:switchery
+```
+
+[Switchery on Atmosphere](https://atmospherejs.com/abpetkov/switchery)
+
 ## Usage
 
 ```js
@@ -241,7 +251,7 @@ If you like this component, share your appreciation by following me in [Twitter]
 
 The MIT License (MIT)
 
-Copyright (c) 2013-2014 Alexander Petkov
+Copyright (c) 2013-2015 Alexander Petkov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
