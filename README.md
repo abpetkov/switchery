@@ -88,6 +88,12 @@ defaults = {
 - `speed` : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)
 - `size` : size of the switch element (small or large)
 
+## API
+
+##### .destroy()
+
+Unbinding all event handlers attached to the switch element to prepare the object for garbage collection.
+
 ## Examples
 
 ##### Checked
