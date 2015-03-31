@@ -17,7 +17,8 @@
 
 var transitionize = require('transitionize')
   , fastclick = require('fastclick')
-  , classes = require('classes');
+  , classes = require('classes')
+  , events = require('events');
 
 /**
  * Expose `Switchery`.
@@ -98,6 +99,7 @@ Switchery.prototype.create = function() {
   this.jack = document.createElement('small');
   this.switcher.appendChild(this.jack);
   this.switcher.className = this.options.className;
+  this.events = events(this.switcher, this);
 
   return this.switcher;
 };
@@ -282,29 +284,29 @@ Switchery.prototype.handleChange = function() {
  */
 
 Switchery.prototype.handleClick = function() {
-  var self = this
-    , switcher = this.switcher
-    , parent = self.element.parentNode.tagName.toLowerCase()
-    , labelParent = (parent === 'label') ? false : true;
+  var switcher = this.switcher;
 
   if (this.isDisabled() === false) {
     fastclick(switcher);
-
-    if (switcher.addEventListener) {
-      switcher.addEventListener('click', function(e) {
-        self.setPosition(labelParent);
-        self.handleOnchange(self.element.checked);
-      });
-    } else {
-      switcher.attachEvent('onclick', function() {
-        self.setPosition(labelParent);
-        self.handleOnchange(self.element.checked);
-      });
-    }
+    this.events.bind('click', 'bindClick');
   } else {
     this.element.disabled = true;
     this.switcher.style.opacity = this.options.disabledOpacity;
   }
+};
+
+/**
+ * Attach all methods that need to happen on switcher click.
+ *
+ * @api private
+ */
+
+Switchery.prototype.bindClick = function() {
+  var parent = this.element.parentNode.tagName.toLowerCase()
+    , labelParent = (parent === 'label') ? false : true;
+
+  this.setPosition(labelParent);
+  this.handleOnchange(this.element.checked);
 };
 
 /**
@@ -341,4 +343,14 @@ Switchery.prototype.init = function() {
   this.markAsSwitched();
   this.handleChange();
   this.handleClick();
+};
+
+/**
+ * Destroy all event handlers attached to the switch.
+ *
+ * @api public
+ */
+
+Switchery.prototype.destroy = function() {
+  this.events.unbind();
 };
