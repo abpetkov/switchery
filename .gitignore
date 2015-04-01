@@ -3,4 +3,4 @@ build/
 components/
 bower_components/
 node_modules/
-index.html
+test.html
