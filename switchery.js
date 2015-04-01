@@ -64,6 +64,7 @@ function Switchery(element, options) {
   }
 
   if (this.element != null && this.element.type == 'checkbox') this.init();
+  if (this.isDisabled() === true) this.disable();
 }
 
 /**
@@ -114,28 +115,6 @@ Switchery.prototype.create = function() {
 
 Switchery.prototype.insertAfter = function(reference, target) {
   reference.parentNode.insertBefore(target, reference.nextSibling);
-};
-
-/**
- * See if input is checked.
- *
- * @returns {Boolean}
- * @api private
- */
-
-Switchery.prototype.isChecked = function() {
-  return this.element.checked;
-};
-
-/**
- * See if switcher should be disabled.
- *
- * @returns {Boolean}
- * @api private
- */
-
-Switchery.prototype.isDisabled = function() {
-  return this.options.disabled || this.element.disabled || this.element.readOnly;
 };
 
 /**
@@ -286,13 +265,8 @@ Switchery.prototype.handleChange = function() {
 Switchery.prototype.handleClick = function() {
   var switcher = this.switcher;
 
-  if (this.isDisabled() === false) {
-    fastclick(switcher);
-    this.events.bind('click', 'bindClick');
-  } else {
-    this.element.disabled = true;
-    this.switcher.style.opacity = this.options.disabledOpacity;
-  }
+  fastclick(switcher);
+  this.events.bind('click', 'bindClick');
 };
 
 /**
@@ -346,6 +320,28 @@ Switchery.prototype.init = function() {
 };
 
 /**
+ * See if input is checked.
+ *
+ * @returns {Boolean}
+ * @api public
+ */
+
+Switchery.prototype.isChecked = function() {
+  return this.element.checked;
+};
+
+/**
+ * See if switcher should be disabled.
+ *
+ * @returns {Boolean}
+ * @api public
+ */
+
+Switchery.prototype.isDisabled = function() {
+  return this.options.disabled || this.element.disabled || this.element.readOnly;
+};
+
+/**
  * Destroy all event handlers attached to the switch.
  *
  * @api public
@@ -353,4 +349,32 @@ Switchery.prototype.init = function() {
 
 Switchery.prototype.destroy = function() {
   this.events.unbind();
+};
+
+/**
+ * Enable disabled switch element.
+ *
+ * @api public
+ */
+
+Switchery.prototype.enable = function() {
+  if (this.options.disabled) this.options.disabled = false;
+  if (this.element.disabled) this.element.disabled = false;
+  if (this.element.readOnly) this.element.readOnly = false;
+  this.switcher.style.opacity = 1;
+  this.events.bind('click', 'bindClick');
+};
+
+/**
+ * Disable switch element.
+ *
+ * @api public
+ */
+
+Switchery.prototype.disable = function() {
+  if (this.options.disabled) this.options.disabled = true;
+  if (this.element.disabled) this.element.disabled = true;
+  if (this.element.readOnly) this.element.readOnly = true;
+  this.switcher.style.opacity = this.options.disabledOpacity;
+  this.destroy();
 };
