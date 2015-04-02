@@ -1593,14 +1593,15 @@ module.exports = Switchery;
  */
 
 var defaults = {
-    color          : '#64bd63'
-  , secondaryColor : '#dfdfdf'
-  , jackColor      : '#fff'
-  , className      : 'switchery'
-  , disabled       : false
-  , disabledOpacity: 0.5
-  , speed          : '0.4s'
-  , size           : 'default'
+    color             : '#64bd63'
+  , secondaryColor    : '#dfdfdf'
+  , jackColor         : '#fff'
+  , jackSecondaryColor: null
+  , className         : 'switchery'
+  , disabled          : false
+  , disabledOpacity   : 0.5
+  , speed             : '0.4s'
+  , size              : 'default'
 };
 
 /**
@@ -1706,7 +1707,7 @@ Switchery.prototype.setPosition = function (clicked) {
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
     this.switcher.style.backgroundColor = (this.options.secondaryColor !== defaults.secondaryColor) ? this.options.secondaryColor : '#fff';
-    this.jack.style.backgroundColor = this.options.jackColor;
+    this.jack.style.backgroundColor = (this.options.jackSecondaryColor !== this.options.jackColor) ? this.options.jackSecondaryColor : this.options.jackColor;
     this.setSpeed();
   }
 };
@@ -1719,7 +1720,10 @@ Switchery.prototype.setPosition = function (clicked) {
 
 Switchery.prototype.setSpeed = function() {
   var switcherProp = {}
-    , jackProp = { 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's' };
+    , jackProp = {
+        'background-color': this.options.speed
+      , 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's'
+    };
 
   if (this.isChecked()) {
     switcherProp = {
