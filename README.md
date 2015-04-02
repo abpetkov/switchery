@@ -68,20 +68,22 @@ Use the above for the standalone version.
 
 ```js
 defaults = {
-    color          : '#64bd63'
-  , secondaryColor : '#dfdfdf'
-  , jackColor      : '#fff'
-  , className      : 'switchery'
-  , disabled       : false
-  , disabledOpacity: 0.5
-  , speed          : '0.4s'
-  , size           : 'default'
+    color             : '#64bd63'
+  , secondaryColor    : '#dfdfdf'
+  , jackColor         : '#fff'
+  , jackSecondaryColor: null
+  , className         : 'switchery'
+  , disabled          : false
+  , disabledOpacity   : 0.5
+  , speed             : '0.4s'
+  , size              : 'default'
 };
 ```
 
 - `color` : color of the switch element (HEX or RGB value)
 - `secondaryColor` : secondary color for background color and border, when the switch is off
-- `jackColor` : color of the jack/handle element
+- `jackColor` : default color of the jack/handle element
+- `jackSecondaryColor` : color of unchecked jack/handle element
 - `className` : class name for the switch element (by default styled in switchery.css)
 - `disabled` : enable or disable click events and changing the state of the switch (boolean value)
 - `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
@@ -152,27 +154,21 @@ Adding `disabled` or `readonly` attribute to the native input element will resul
 
 ##### Colored
 
-You can change the primary color of the switch to fit your design perfectly:
+You can change the primary(on) and secondary(off) color of the switch to fit your design perfectly. Accomplish this, changing the `color` and `secondaryColor` options. The jack colors are also customizable via the `jackColor` and the `jackSecondaryColor` options. Below is a good example of what you can accomplish using those.
 
 ```js
-var switchery = new Switchery(elem, { color: '#41b7f1' });
+var switchery = new Switchery(elem, { color: '#7c8bc7', jackColor: '#9decff' });
 ```
 
-![Colored](http://i.imgur.com/qO0Pzub.jpg)
+![JackColor](http://i.imgur.com/7ztX29e.png)
 
-Or the secondary color, which will change the switch background color and border color:
+or
 
 ```js
-var switchery = new Switchery(elem, { secondaryColor: '#bbf0f0' });
+var switchery = new Switchery(elem, { color: '#faab43', secondaryColor: '#fC73d0', jackColor: '#fcf45e', jackSecondaryColor: '#c8ff77' });
 ```
 
-Since version 0.6.3, you're even allowed to change the jack color from JS, as follows:
-
-```js
-var switchery = new Switchery(elem, { jackColor: '#fffc00' });
-```
-
-![JackColor](http://i.imgur.com/vQNXkhJ.png)
+![JackSecondaryColor](http://i.imgur.com/KS0H8ac.png)
 
 Any other changes regarding colors you want to make, should take place in `switchery.css`.
 
