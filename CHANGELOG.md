@@ -1,4 +1,12 @@
 
+0.8.0 / 2015-04-03
+==================
+
+  * Secondary jack color functionality
+  * Enable/disable switch dynamically
+  * Destroy event handlers attached to a Switchery instance
+  * Meteor.js integration
+
 0.7.0 / 2014-12-09
 ==================
 
