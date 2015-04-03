@@ -7,7 +7,7 @@ var where = 'client'; // where to install: 'client' or 'server'. For both, pass 
 Package.describe({
     name: packageName,
     summary: 'Switchery (official) - turns your default HTML checkbox inputs into beautiful iOS 7 style switches.',
-    version: "0.0.1", //packageJson.version,
+    version: "0.1.0", //packageJson.version,
     git: 'https://github.com/abpetkov/switchery'
 });
 
