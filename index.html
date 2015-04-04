@@ -270,46 +270,30 @@
         <div class="example">
           <h4>Colored</h4>
 
-          <p>You can change the primary color of the switch to fit your design perfectly:</p>
+          <p>You can change the primary(on) and secondary(off) color of the switch to fit your design perfectly. Accomplish this, changing the <strong>color</strong> and <strong>secondaryColor</strong> options. The jack colors are also customizable via the <strong>jackColor</strong> and the <strong>jackSecondaryColor</strong> options. Below is a good example of what you can accomplish using those.</p>
 
           <pre>
             <div class="script">
-              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { color: '<span class="value">#41b7f1</span>' });</div>
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { color: '<span class="value">#7c8bc7</span>', jackColor: '<span class="value">#9decff</span>' });</div>
             </div>
           </pre>
 
           <p>Result:</p>
           <p>
             <input type="checkbox" class="js-switch-blue" checked />
-            <input type="checkbox" class="js-switch-pink" checked />
-            <input type="checkbox" class="js-switch-teal" checked />
-            <input type="checkbox" class="js-switch-red" checked />
           </p>
 
-          <p>Or the secondary color, which will change the background color and border color:</p>
+          <p>or:</p>
 
           <pre>
             <div class="script">
-              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { color: '<span class="value">#fec200</span>', secondaryColor: '<span class="value">#fec200</span>' });</div>
+              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { color: '<span class="value">#faab43</span>', secondaryColor: '<span class="value">#fC73d0</span>', jackColor: '<span class="value">#fcf45e</span>', jackSecondaryColor: '<span class="value">#c8ff77</span>' });</div>
             </div>
           </pre>
 
           <p>Result:</p>
           <p>
-            <input type="checkbox" class="js-switch-secondary" checked />
-          </p>
-
-          <p>Since version 0.6.3, you're even allowed to change the jack color from JS, as follows:</p>
-
-          <pre>
-            <div class="script">
-              <div><span class="specials">var</span> switchery = <span class="single">new</span> Switchery(elem, { jackColor: '<span class="value">#fffc00</span>' });</div>
-            </div>
-          </pre>
-
-          <p>Result:</p>
-          <p>
-            <input type="checkbox" class="js-switch-jack-color" checked />
+            <input type="checkbox" class="js-switch-pink" />
           </p>
         </div>
 
@@ -500,23 +484,10 @@
 
       // Colored switches
       var blue = document.querySelector('.js-switch-blue');
-      var switchery = new Switchery(blue, { color: '#41b7f1' });
+      var switchery = new Switchery(blue, { color: '#7c8bc7', jackColor: '#9decff' });
 
       var pink = document.querySelector('.js-switch-pink');
-      var switchery = new Switchery(pink, { color: '#ff7791' });
-
-      var teal = document.querySelector('.js-switch-teal');
-      var switchery = new Switchery(teal, { color: '#3cc8ad' });
-
-      var red = document.querySelector('.js-switch-red');
-      var switchery = new Switchery(red, { color: '#db5554' });
-
-      var secondary = document.querySelector('.js-switch-secondary');
-      var switchery = new Switchery(secondary, { color: '#fec200', secondaryColor: '#ff8787' });
-
-      // Colored jack
-      var jack = document.querySelector('.js-switch-jack-color');
-      var switchery = new Switchery(jack, { jackColor: '#fffc00' });
+      var switchery = new Switchery(pink, { color: '#faab43', secondaryColor: '#fC73d0', jackColor: '#fcf45e', jackSecondaryColor: '#c8ff77' });
 
       // Switch sizes
       var small = document.querySelector('.js-switch-small');
