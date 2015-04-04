@@ -527,7 +527,8 @@ pre {
   margin-right: 0;
 }
 
-.check-state > .button {
+.check-state > .button,
+.dynamic-state > .button {
   margin-left: 10px;
   padding: 4px 15px;
 }

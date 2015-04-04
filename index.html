@@ -101,6 +101,18 @@
 
         <p>For thorough installation and usage instructions on how to use Switchery with Angular JS, check out this repo: <a href="https://github.com/servergrove/NgSwitchery" target="_blank">servergrove/NgSwitchery</a></p>
 
+        <h4>Meteor</h4>
+
+        <p>You can install Switchery to your Meteor.js app via:</p>
+
+        <pre>
+          <div class="tag">
+            $ meteor add abpetkov:switchery
+          </div>
+        </pre>
+
+        <a href="https://atmospherejs.com/abpetkov/switchery" target="_blank">Switchery on Atmosphere</a>
+
       </section>
 
       <section class="section">
@@ -108,7 +120,7 @@
 
         <pre>
           <div class="script">
-            <div><span class="specials">var</span> elem = <span class="single">document</span>.querySelector('.js-switch');</div>
+            <div><span class="specials">var</span> elem = <span class="single">document</span>.querySelector('<span class="value">.js-switch<span>');</div>
             <div><span class="specials">var</span> init = <span class="single">new</span> Switchery(elem);</div>
           </div>
         </pre>
@@ -122,14 +134,15 @@
         <pre>
           <div class="script">
             <div>defaults <span class="single">=</span> <span class="specials">{</span></div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
-              <div>&nbsp;&nbsp;, secondaryColor&nbsp;: <span class="quote">'</span><span class="value">#dfdfdf</span><span class="quote">'</span></div>
-              <div>&nbsp;&nbsp;, jackColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#fff</span><span class="quote">'</span></div>
-              <div>&nbsp;&nbsp;, className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
-              <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
-              <div>&nbsp;&nbsp;, disabledOpacity: 0.5</div>
-              <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
-              <div>&nbsp;&nbsp;, size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">default</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#64bd63</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, secondaryColor&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#dfdfdf</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, jackColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">#fff</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, jackSecondaryColor: <span class="boolean">null</span></div>
+              <div>&nbsp;&nbsp;, className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">switchery</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="boolean">false</span></div>
+              <div>&nbsp;&nbsp;, disabledOpacity&nbsp;&nbsp;&nbsp;: 0.5</div>
+              <div>&nbsp;&nbsp;, speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">0.1s</span><span class="quote">'</span></div>
+              <div>&nbsp;&nbsp;, size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="quote">'</span><span class="value">default</span><span class="quote">'</span></div>
             <div class="specials">}</div>
           </div>
         </pre>
@@ -137,7 +150,8 @@
         <ul class="section-list">
           <li><em>color</em> : <p>color of the switch element (HEX or RGB value)</p></li>
           <li><em>secondaryColor</em> : <p>secondary color for the background color and border, when the switch is off</p></li>
-          <li><em>jackColor</em> : <p>color of the jack/handle element</p></li>
+          <li><em>jackColor</em> : <p>default color of the jack/handle element</p></li>
+          <li><em>jackSecondaryColor</em> : <p>color of unchecked jack/handle element</p></li>
           <li><em>className</em> : <p>class name for the switch element (by default styled in <span>switchery.css</span>)</p></li>
           <li><em>disabled</em> : <p>enable or disable click events and changing the state of the switch (boolean value)</p></li>
           <li><em>disabledOpacity</em> : <p>opacity of the switch when disabled is true (0 to 1)</p></li>
@@ -202,10 +216,10 @@
           </pre>
         </div>
 
-        <div class="example">
+        <div class="example dynamic-state">
           <h4>Disabled</h4>
 
-          <p>Use the <strong>disabled</strong> option to make your switch active or inactive.</p>
+          <p>Use the <strong>disabled</strong> option to make your switch active or inactive. Native approaches like adding a <strong>readonly</strong> or <strong>disabled</strong> attributes to the checkbox are respected and will end in having a disabled switch by default.</p>
 
           <pre>
             <div class="script">
@@ -229,6 +243,28 @@
           <p>
             <input type="checkbox" class="js-switch-disabled-opacity" checked />
           </p>
+
+          <p>You can also dynamically change the active/inactive state of your switches.</p>
+          <pre>
+            <div class="script">
+              <div><span class="specials">var</span> dynamicDisable = <span class="single">document</span>.querySelector('<span class="value">.js-dynamic-state</span>');</div>
+              <div><span class="specials">var</span> dynamicStateCheckbox = <span class="single">new</span> Switchery(dynamicDisable);</div>
+              <br>
+              <div><span class="single">document</span>.querySelector('<span class="value">.js-dynamic-disable</span>').addEventListener('click', <span class="specials">function</span>() <span class="single">{</span></div>
+              <div>&nbsp;&nbsp;dynamicStateCheckbox.disable();</div>
+              <div><span class="single">}</span>);</div>
+              <br>
+              <div><span class="single">document</span>.querySelector('<span class="value">.js-dynamic-enable</span>').addEventListener('click', <span class="specials">function</span>() <span class="single">{</span></div>
+              <div>&nbsp;&nbsp;dynamicStateCheckbox.enable();</div>
+              <div><span class="single">}</span>);</div>
+            </div>
+          </pre>
+
+          <p>Result:</p>
+          <input type="checkbox" class="js-dynamic-state" checked disabled />
+          <button class="button js-dynamic-disable">Disable</button>
+          <button class="button js-dynamic-enable">Enable</button>
+
         </div>
 
         <div class="example">
@@ -488,6 +524,18 @@
 
       var large = document.querySelector('.js-switch-large');
       var switchery = new Switchery(large, { size: 'large' });
+
+      // Dynamic enable/disable
+      var dynamicDisable = document.querySelector('.js-dynamic-state');
+      var dynamicStateCheckbox = new Switchery(dynamicDisable);
+
+      document.querySelector('.js-dynamic-disable').addEventListener('click', function() {
+        dynamicStateCheckbox.disable();
+      });
+
+      document.querySelector('.js-dynamic-enable').addEventListener('click', function() {
+        dynamicStateCheckbox.enable();
+      });
 
       // Getting checkbox state
       // On click
