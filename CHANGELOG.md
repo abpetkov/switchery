@@ -1,4 +1,9 @@
 
+0.8.1 / 2015-06-26
+==================
+
+  * Check disabled values properly, because of `.isDisabled()` method returning improper value
+
 0.8.0 / 2015-04-03
 ==================
 
