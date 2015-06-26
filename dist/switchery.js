@@ -1559,7 +1559,7 @@ function parse(event) {
 
 require.register("switchery", function (exports, module) {
 /**
- * Switchery 0.8.0
+ * Switchery 0.8.1
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1936,9 +1936,9 @@ Switchery.prototype.enable = function() {
  */
 
 Switchery.prototype.disable = function() {
-  if (this.options.disabled) this.options.disabled = true;
-  if (this.element.disabled) this.element.disabled = true;
-  if (this.element.readOnly) this.element.readOnly = true;
+  if (!this.options.disabled) this.options.disabled = true;
+  if (!this.element.disabled) this.element.disabled = true;
+  if (!this.element.readOnly) this.element.readOnly = true;
   this.switcher.style.opacity = this.options.disabledOpacity;
   this.destroy();
 };
