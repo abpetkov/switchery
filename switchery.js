@@ -42,6 +42,7 @@ var defaults = {
   , disabledOpacity   : 0.5
   , speed             : '0.4s'
   , size              : 'default'
+  , tabIndex          : ''
 };
 
 /**
@@ -101,6 +102,7 @@ Switchery.prototype.create = function() {
   this.jack = document.createElement('small');
   this.switcher.appendChild(this.jack);
   this.switcher.className = this.options.className;
+  this.switcher.tabIndex = this.options.tabIndex;
   this.events = events(this.switcher, this);
 
   return this.switcher;
