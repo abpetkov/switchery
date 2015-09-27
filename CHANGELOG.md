@@ -1,4 +1,9 @@
 
+0.8.2 / 2015-09-27
+==================
+
+  * Changed package.json to point correctly to the main file within dist.
+
 0.8.1 / 2015-06-26
 ==================
 
