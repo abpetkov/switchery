@@ -1,5 +1,5 @@
 {
-  "name": "switchery",
+  "name": "requirejs-switchery",
   "main": [
     "dist/switchery.js",
     "dist/switchery.css"
