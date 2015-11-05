@@ -141,7 +141,7 @@ require.define = function (name, exports) {
 require.register("abpetkov~transitionize@0.0.3", function (exports, module) {
 
 /**
- * Transitionize 0.0.2
+ * Transitionize 0.0.3
  * https://github.com/abpetkov/transitionize
  *
  * Authored by Alexander Petkov
@@ -1308,25 +1308,38 @@ function match(el, selector) {
 
 });
 
-require.register("component~closest@0.1.4", function (exports, module) {
+require.register("component~closest@1.0.0", function (exports, module) {
+/**
+ * Module Dependencies
+ */
+
 var matches = require('component~matches-selector@0.1.5')
 
-module.exports = function (element, selector, checkYoSelf, root) {
-  element = checkYoSelf ? {parentNode: element} : element
+/**
+ * Export `closest`
+ */
 
-  root = root || document
+module.exports = closest
 
-  // Make sure `element !== document` and `element != null`
-  // otherwise we get an illegal invocation
-  while ((element = element.parentNode) && element !== document) {
-    if (matches(element, selector))
-      return element
-    // After `matches` on the edge case that
-    // the selector matches the root
-    // (when the root is not the document)
-    if (element === root)
-      return
+/**
+ * Closest
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @param {Element} scope (optional)
+ */
+
+function closest (el, selector, scope) {
+  scope = scope || document.documentElement;
+
+  // walk up the dom
+  while (el && el !== scope) {
+    if (matches(el, selector)) return el;
+    el = el.parentNode;
   }
+
+  // check scope for match
+  return matches(el, selector) ? el : null;
 }
 
 });
@@ -1336,7 +1349,7 @@ require.register("component~delegate@0.2.3", function (exports, module) {
  * Module dependencies.
  */
 
-var closest = require('component~closest@0.1.4')
+var closest = require('component~closest@1.0.0')
   , event = require('component~event@0.1.4');
 
 /**
@@ -1576,9 +1589,9 @@ require.register("switchery", function (exports, module) {
  */
 
 var transitionize = require('abpetkov~transitionize@0.0.3')
-  , fastclick = require('ftlabs~fastclick@v0.6.11')
-  , classes = require('component~classes@1.2.1')
-  , events = require('component~events@1.0.9');
+    , fastclick = require('ftlabs~fastclick@v0.6.11')
+    , classes = require('component~classes@1.2.1')
+    , events = require('component~events@1.0.9');
 
 /**
  * Expose `Switchery`.
@@ -1593,7 +1606,7 @@ module.exports = Switchery;
  */
 
 var defaults = {
-    color             : '#64bd63'
+  color             : '#64bd63'
   , secondaryColor    : '#dfdfdf'
   , jackColor         : '#fff'
   , jackSecondaryColor: null
@@ -1679,20 +1692,13 @@ Switchery.prototype.insertAfter = function(reference, target) {
 };
 
 /**
- * Set switch jack proper position.
+ * Set jack to a desired state.
  *
- * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
- * @api private
+ * @param {Boolean} checked
  */
-
-Switchery.prototype.setPosition = function (clicked) {
-  var checked = this.isChecked()
-    , switcher = this.switcher
-    , jack = this.jack;
-
-  if (clicked && checked) checked = false;
-  else if (clicked && !checked) checked = true;
-
+Switchery.prototype.setChecked = function (checked) {
+  var jack = this.jack,
+      switcher = this.switcher;
   if (checked === true) {
     this.element.checked = true;
 
@@ -1710,6 +1716,21 @@ Switchery.prototype.setPosition = function (clicked) {
     this.jack.style.backgroundColor = (this.options.jackSecondaryColor !== this.options.jackColor) ? this.options.jackSecondaryColor : this.options.jackColor;
     this.setSpeed();
   }
+}
+
+/**
+ * Set switch jack proper position.
+ *
+ * @param {Boolean} clicked - we need this in order to uncheck the input when the switch is clicked
+ * @api private
+ */
+Switchery.prototype.setPosition = function (clicked) {
+  var checked = this.isChecked()
+
+  if (clicked && checked) checked = false;
+  else if (clicked && !checked) checked = true;
+
+  this.setChecked(checked);
 };
 
 /**
@@ -1720,20 +1741,20 @@ Switchery.prototype.setPosition = function (clicked) {
 
 Switchery.prototype.setSpeed = function() {
   var switcherProp = {}
-    , jackProp = {
+      , jackProp = {
         'background-color': this.options.speed
-      , 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's'
-    };
+        , 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's'
+      };
 
   if (this.isChecked()) {
     switcherProp = {
-        'border': this.options.speed
+      'border': this.options.speed
       , 'box-shadow': this.options.speed
       , 'background-color': this.options.speed.replace(/[a-z]/, '') * 3 + 's'
     };
   } else {
     switcherProp = {
-        'border': this.options.speed
+      'border': this.options.speed
       , 'box-shadow': this.options.speed
     };
   }
@@ -1750,8 +1771,8 @@ Switchery.prototype.setSpeed = function() {
 
 Switchery.prototype.setSize = function() {
   var small = 'switchery-small'
-    , normal = 'switchery-default'
-    , large = 'switchery-large';
+      , normal = 'switchery-default'
+      , large = 'switchery-large';
 
   switch (this.options.size) {
     case 'small':
@@ -1807,7 +1828,7 @@ Switchery.prototype.handleOnchange = function(state) {
 
 Switchery.prototype.handleChange = function() {
   var self = this
-    , el = this.element;
+      , el = this.element;
 
   if (el.addEventListener) {
     el.addEventListener('change', function() {
@@ -1841,7 +1862,7 @@ Switchery.prototype.handleClick = function() {
 
 Switchery.prototype.bindClick = function() {
   var parent = this.element.parentNode.tagName.toLowerCase()
-    , labelParent = (parent === 'label') ? false : true;
+      , labelParent = (parent === 'label') ? false : true;
 
   this.setPosition(labelParent);
   this.handleOnchange(this.element.checked);
