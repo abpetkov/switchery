@@ -1952,4 +1952,4 @@ if (typeof exports == "object") {
 } else {
   (this || window)["Switchery"] = require("switchery");
 }
-})()
+})();
