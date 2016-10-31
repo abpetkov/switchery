@@ -1,4 +1,10 @@
 
+0.8.2 / 2016-10-31
+==================
+
+  * Adding semicolon to the end of the distribuition file
+  * Check switchery element state before changing it
+
 0.8.1 / 2015-06-26
 ==================
 

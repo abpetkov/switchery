@@ -4,7 +4,7 @@
     "dist/switchery.js",
     "dist/switchery.css"
   ],
-  "version": "0.8.1",
+  "version": "0.8.2",
   "homepage": "http://abpetkov.github.io/switchery/",
   "author": [
     "Alexander Petkov <abpetkov@gmail.com> (https://github.com/abpetkov)"

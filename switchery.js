@@ -1,5 +1,5 @@
 /**
- * Switchery 0.8.1
+ * Switchery 0.8.2
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
