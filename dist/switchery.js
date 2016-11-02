@@ -56,11 +56,11 @@ require.helper.semVerSort = function(a, b) {
 
 /**
  * Find and require a module which name starts with the provided name.
- * If multiple modules exists, the highest semver is used. 
+ * If multiple modules exists, the highest semver is used.
  * This function can only be used for remote dependencies.
 
  * @param {String} name - module name: `user~repo`
- * @param {Boolean} returnPath - returns the canonical require path if true, 
+ * @param {Boolean} returnPath - returns the canonical require path if true,
  *                               otherwise it returns the epxorted module
  */
 require.latest = function (name, returnPath) {
@@ -83,7 +83,7 @@ require.latest = function (name, returnPath) {
           semVerCandidates.push({version: version, name: moduleName});
         } else {
           otherCandidates.push({version: version, name: moduleName});
-        } 
+        }
     }
   }
   if (semVerCandidates.concat(otherCandidates).length === 0) {
@@ -943,7 +943,7 @@ FastClick.notNeeded = function(layer) {
 
 		if (FastClick.prototype.deviceIsAndroid) {
 			metaViewport = document.querySelector('meta[name=viewport]');
-			
+
 			if (metaViewport) {
 				// Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
 				if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
@@ -1922,6 +1922,7 @@ Switchery.prototype.destroy = function() {
  */
 
 Switchery.prototype.enable = function() {
+  if (!this.options.disabled) return;
   if (this.options.disabled) this.options.disabled = false;
   if (this.element.disabled) this.element.disabled = false;
   if (this.element.readOnly) this.element.readOnly = false;
@@ -1936,6 +1937,7 @@ Switchery.prototype.enable = function() {
  */
 
 Switchery.prototype.disable = function() {
+  if (this.options.disabled) return;
   if (!this.options.disabled) this.options.disabled = true;
   if (!this.element.disabled) this.element.disabled = true;
   if (!this.element.readOnly) this.element.readOnly = true;
@@ -1952,4 +1954,4 @@ if (typeof exports == "object") {
 } else {
   (this || window)["Switchery"] = require("switchery");
 }
-})()
+})();
