@@ -2,7 +2,7 @@
   "name": "switchery",
   "version": "0.8.2",
   "description": "Create iOS 7 styled switches from default input checkboxes",
-  "main": "switchery.js",
+  "main": "dist/switchery.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/abpetkov/switchery.git"
