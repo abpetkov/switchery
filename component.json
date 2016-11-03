@@ -10,7 +10,7 @@
     "iOS7"
   ],
   "license": "MIT",
-  "main": "dist/switchery.js",
+  "main": "switchery.js",
   "scripts": [
     "switchery.js"
   ],
