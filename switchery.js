@@ -97,8 +97,9 @@ Switchery.prototype.show = function() {
  */
 
 Switchery.prototype.create = function() {
-  this.switcher = document.createElement('span');
-  this.jack = document.createElement('small');
+  var elementDocument = this.element.ownerDocument || document;
+  this.switcher = elementDocument.createElement('span');
+  this.jack = elementDocument.createElement('small');
   this.switcher.appendChild(this.jack);
   this.switcher.className = this.options.className;
   this.events = events(this.switcher, this);
@@ -229,8 +230,9 @@ Switchery.prototype.colorize = function() {
  */
 
 Switchery.prototype.handleOnchange = function(state) {
-  if (document.dispatchEvent) {
-    var event = document.createEvent('HTMLEvents');
+  var elementDocument = this.element.ownerDocument || document;
+  if (elementDocument.dispatchEvent) {
+    var event = elementDocument.createEvent('HTMLEvents');
     event.initEvent('change', true, true);
     this.element.dispatchEvent(event);
   } else {
