@@ -269,7 +269,7 @@ Switchery.prototype.handleChange = function() {
 Switchery.prototype.handleClick = function() {
   var switcher = this.switcher;
 
-  fastclick(switcher);
+  fastclick.attach(switcher);
   this.events.bind('click', 'bindClick');
 };
 

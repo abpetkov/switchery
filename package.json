@@ -18,5 +18,11 @@
     "uglifycss": "0.0.7",
     "grunt-exec": "latest",
     "spacejam": "latest"
+  },
+  "dependencies": {
+    "component-classes": "^1.2.6",
+    "component-events": "^1.0.10",
+    "fastclick": "^0.6.11",
+    "transitionize": "0.0.3"
   }
 }

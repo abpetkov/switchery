@@ -56,11 +56,11 @@ require.helper.semVerSort = function(a, b) {
 
 /**
  * Find and require a module which name starts with the provided name.
- * If multiple modules exists, the highest semver is used.
+ * If multiple modules exists, the highest semver is used. 
  * This function can only be used for remote dependencies.
 
  * @param {String} name - module name: `user~repo`
- * @param {Boolean} returnPath - returns the canonical require path if true,
+ * @param {Boolean} returnPath - returns the canonical require path if true, 
  *                               otherwise it returns the epxorted module
  */
 require.latest = function (name, returnPath) {
@@ -83,7 +83,7 @@ require.latest = function (name, returnPath) {
           semVerCandidates.push({version: version, name: moduleName});
         } else {
           otherCandidates.push({version: version, name: moduleName});
-        }
+        } 
     }
   }
   if (semVerCandidates.concat(otherCandidates).length === 0) {
@@ -141,7 +141,7 @@ require.define = function (name, exports) {
 require.register("abpetkov~transitionize@0.0.3", function (exports, module) {
 
 /**
- * Transitionize 0.0.2
+ * Transitionize 0.0.3
  * https://github.com/abpetkov/transitionize
  *
  * Authored by Alexander Petkov
@@ -943,7 +943,7 @@ FastClick.notNeeded = function(layer) {
 
 		if (FastClick.prototype.deviceIsAndroid) {
 			metaViewport = document.querySelector('meta[name=viewport]');
-
+			
 			if (metaViewport) {
 				// Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
 				if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
@@ -1258,12 +1258,16 @@ exports.engine = function(obj){
 
 });
 
-require.register("component~matches-selector@0.1.5", function (exports, module) {
+require.register("component~matches-selector@0.1.6", function (exports, module) {
 /**
  * Module dependencies.
  */
 
-var query = require('component~query@0.0.3');
+try {
+  var query = require('component~query@0.0.3');
+} catch (err) {
+  var query = require('component~query@0.0.3');
+}
 
 /**
  * Element prototype.
@@ -1308,25 +1312,42 @@ function match(el, selector) {
 
 });
 
-require.register("component~closest@0.1.4", function (exports, module) {
-var matches = require('component~matches-selector@0.1.5')
+require.register("component~closest@1.0.1", function (exports, module) {
+/**
+ * Module Dependencies
+ */
 
-module.exports = function (element, selector, checkYoSelf, root) {
-  element = checkYoSelf ? {parentNode: element} : element
+try {
+  var matches = require('component~matches-selector@0.1.6')
+} catch (err) {
+  var matches = require('component~matches-selector@0.1.6')
+}
 
-  root = root || document
+/**
+ * Export `closest`
+ */
 
-  // Make sure `element !== document` and `element != null`
-  // otherwise we get an illegal invocation
-  while ((element = element.parentNode) && element !== document) {
-    if (matches(element, selector))
-      return element
-    // After `matches` on the edge case that
-    // the selector matches the root
-    // (when the root is not the document)
-    if (element === root)
-      return
+module.exports = closest
+
+/**
+ * Closest
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @param {Element} scope (optional)
+ */
+
+function closest (el, selector, scope) {
+  scope = scope || document.documentElement;
+
+  // walk up the dom
+  while (el && el !== scope) {
+    if (matches(el, selector)) return el;
+    el = el.parentNode;
   }
+
+  // check scope for match
+  return matches(el, selector) ? el : null;
 }
 
 });
@@ -1336,7 +1357,7 @@ require.register("component~delegate@0.2.3", function (exports, module) {
  * Module dependencies.
  */
 
-var closest = require('component~closest@0.1.4')
+var closest = require('component~closest@1.0.1')
   , event = require('component~event@0.1.4');
 
 /**
@@ -1559,7 +1580,7 @@ function parse(event) {
 
 require.register("switchery", function (exports, module) {
 /**
- * Switchery 0.8.1
+ * Switchery 0.8.2
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -1829,7 +1850,7 @@ Switchery.prototype.handleChange = function() {
 Switchery.prototype.handleClick = function() {
   var switcher = this.switcher;
 
-  fastclick(switcher);
+  fastclick.attach(switcher);
   this.events.bind('click', 'bindClick');
 };
 
@@ -1954,4 +1975,4 @@ if (typeof exports == "object") {
 } else {
   (this || window)["Switchery"] = require("switchery");
 }
-})();
+})()
