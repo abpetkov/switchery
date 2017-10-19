@@ -47,7 +47,7 @@ For thorough installation and usage instructions on how to use Switchery with An
 
 ##### React
 
-Switchery as an React component: [shlensky/sweetcherry](https://github.com/shlensky/sweetcherry)
+Switchery as an React component: [shlensky/react-switchery-component](https://github.com/shlensky/react-switchery-component)
 
 ##### Meteor
 
