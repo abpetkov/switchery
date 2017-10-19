@@ -45,6 +45,10 @@ Or go to [Switchery Rails gem page](https://rubygems.org/gems/switchery-rails) f
 
 For thorough installation and usage instructions on how to use Switchery with Angular JS, check out this repo: [servergrove/NgSwitchery](https://github.com/servergrove/NgSwitchery)
 
+##### React
+
+Switchery as an React component: [shlensky/react-switchery-component](https://github.com/shlensky/react-switchery-component)
+
 ##### Meteor
 
 You can install Switchery to your Meteor.js app via:
