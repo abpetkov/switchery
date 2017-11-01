@@ -42,6 +42,7 @@ var defaults = {
   , disabledOpacity   : 0.5
   , speed             : '0.4s'
   , size              : 'default'
+  , rtl              : false
 };
 
 /**
@@ -136,13 +137,13 @@ Switchery.prototype.setPosition = function (clicked) {
   if (checked === true) {
     this.element.checked = true;
 
-    if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - parseInt(window.getComputedStyle(jack).width) + 'px';
-    else jack.style.left = parseInt(switcher.currentStyle['width']) - parseInt(jack.currentStyle['width']) + 'px';
+    if (window.getComputedStyle) jack.style[this.options.rtl ? 'right' : 'left' ] = parseInt(window.getComputedStyle(switcher).width) - parseInt(window.getComputedStyle(jack).width) + 'px';
+    else jack.style[this.options.rtl ? 'right' : 'left' ] = parseInt(switcher.currentStyle['width']) - parseInt(jack.currentStyle['width']) + 'px';
 
     if (this.options.color) this.colorize();
     this.setSpeed();
   } else {
-    jack.style.left = 0;
+    jack.style[this.options.rtl ? 'right' : 'left' ] = 0;
     this.element.checked = false;
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
@@ -162,8 +163,9 @@ Switchery.prototype.setSpeed = function() {
   var switcherProp = {}
     , jackProp = {
         'background-color': this.options.speed
-      , 'left': this.options.speed.replace(/[a-z]/, '') / 2 + 's'
     };
+
+  jackProp[this.options.rtl ? 'right' : 'left' ] = this.options.speed.replace(/[a-z]/, '') / 2 + 's';
 
   if (this.isChecked()) {
     switcherProp = {

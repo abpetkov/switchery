@@ -77,6 +77,7 @@ defaults = {
   , disabledOpacity   : 0.5
   , speed             : '0.4s'
   , size              : 'default'
+  , rtl               : false
 };
 ```
 
@@ -89,6 +90,7 @@ defaults = {
 - `disabledOpacity` : opacity of the switch when it's disabled (0 to 1)
 - `speed` : length of time that the transition will take, ex. '0.4s', '1s', '2.2s' (Note: transition speed of the handle is twice shorter)
 - `size` : size of the switch element (small or large)
+- `rtl` : flip the switch direction
 
 ## API
 
