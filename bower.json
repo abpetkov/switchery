@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "transitionize": "*",
-    "fastclick": "v0.6.11"
+    "fastclick": "0.6.11"
   },
   "devDependencies": {}
 }
