@@ -103,6 +103,11 @@ Switchery.prototype.create = function() {
   this.switcher.className = this.options.className;
   this.events = events(this.switcher, this);
 
+  this.switcher.tabIndex = '0';
+  this.switcher.setAttribute('role', 'checkbox');
+  this.switcher.ariaChecked = 'false';
+  this.switcher.ariaLabel = this.options.ariaLabel;
+  
   return this.switcher;
 };
 
@@ -135,7 +140,8 @@ Switchery.prototype.setPosition = function (clicked) {
 
   if (checked === true) {
     this.element.checked = true;
-
+    this.switcher.ariaChecked = 'true';
+    
     if (window.getComputedStyle) jack.style.left = parseInt(window.getComputedStyle(switcher).width) - parseInt(window.getComputedStyle(jack).width) + 'px';
     else jack.style.left = parseInt(switcher.currentStyle['width']) - parseInt(jack.currentStyle['width']) + 'px';
 
@@ -144,6 +150,8 @@ Switchery.prototype.setPosition = function (clicked) {
   } else {
     jack.style.left = 0;
     this.element.checked = false;
+    this.switcher.ariaChecked = 'false';
+    
     this.switcher.style.boxShadow = 'inset 0 0 0 0 ' + this.options.secondaryColor;
     this.switcher.style.borderColor = this.options.secondaryColor;
     this.switcher.style.backgroundColor = (this.options.secondaryColor !== defaults.secondaryColor) ? this.options.secondaryColor : '#fff';
@@ -271,6 +279,7 @@ Switchery.prototype.handleClick = function() {
 
   fastclick(switcher);
   this.events.bind('click', 'bindClick');
+  this.events.bind('keyup', 'bindKeyUp');
 };
 
 /**
@@ -286,7 +295,15 @@ Switchery.prototype.bindClick = function() {
   this.setPosition(labelParent);
   this.handleOnchange(this.element.checked);
 };
+Switchery.prototype.keyPressCodes = [32, 13, 37, 39];
+Switchery.prototype.bindKeyUp = function (evt) {
 
+
+    if (Switchery.prototype.keyPressCodes.indexOf(evt.keyCode) < 0)
+        return;
+
+    this.bindClick();
+};
 /**
  * Mark an individual switch as already handled.
  *
@@ -368,6 +385,7 @@ Switchery.prototype.enable = function() {
   if (this.element.readOnly) this.element.readOnly = false;
   this.switcher.style.opacity = 1;
   this.events.bind('click', 'bindClick');
+  this.events.bind('keyup', 'bindKeyUp');
 };
 
 /**
